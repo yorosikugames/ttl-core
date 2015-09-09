@@ -5,7 +5,7 @@ describe('Spawn', function () {
         world = new World();
     });
 
-    it('텅텅 빈 월드에 액터가 있으라...', function () {
+    it('텅텅 빈 월드에 액터가 있으라... 액터 스폰 초기 프롭 확인', function () {
         var a = new Actor();
         var ix = 0, iy = 0;
         var spawnAction = new WorldSpawn(a, ix, iy);
@@ -17,6 +17,7 @@ describe('Spawn', function () {
         expect(world.getCell(ix, iy).isEmpty()).toBeTruthy();
         expect(world.getOccupiedCellCount()).toEqual(0);
         expect(world.getStep()).toEqual(0);
+        expect(a.getHp()).toEqual(100);
         // 스테핑!!!
         world.nextStep();
         expect(world.getStep()).toEqual(1);
