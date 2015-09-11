@@ -71,4 +71,50 @@ describe('Move', function() {
         expect(a.getIntentCount()).toEqual(0);
     });
 
+    function SpawnActorMoveDelta(aix, aiy, dix, diy) {
+        var a = new Actor();
+        var moveAction = new WorldMoveAction(dix, diy);
+        expect(a.appendIntent(moveAction)).toBeTruthy();
+        var spawnAction = new WorldSpawn(a, aix, aiy);
+        expect(world.appendIntent(spawnAction)).toBeTruthy();
+        return {
+            actor: a,
+            spawn: spawnAction,
+            move: moveAction,
+        };
+    }
+
+    /*
+        [A][B][ ] -> [ ][A][B]
+    */
+    it('액터 둘이 인접한 상태로 함께 오른쪽 방향으로 이동하기', function() {
+        var set1 = SpawnActorMoveDelta(0, 0, 1, 0);
+        var set2 = SpawnActorMoveDelta(1, 0, 1, 0);
+        world.nextStep();
+        expect(world.getCell(0, 0).isEmpty()).toBeTruthy();
+        expect(world.getCell(1, 0).getOwner()).toEqual(set1.actor);
+        expect(world.getCell(2, 0).getOwner()).toEqual(set2.actor);
+    });
+
+    it('같은 셀에 두 액터가 동시에 들어가려고 할 때 먼저 들어가길 요청한 액터 하나만 들어감', function() {
+        var set1 = SpawnActorMoveDelta(0, 0, 1, 0);
+        var set2 = SpawnActorMoveDelta(2, 0, -1, 0);
+        world.nextStep();
+        expect(world.getCell(0, 0).isEmpty()).toBeTruthy();
+        expect(world.getCell(1, 0).getOwner()).toEqual(set1.actor);
+        expect(world.getCell(2, 0).getOwner()).toEqual(set2.actor);
+    });
+
+    it('텔-레-포-트', function() {
+        var a = new Actor();
+        var aix = 0, aiy = 0;
+        var bix = 10, biy = 20;
+        var teleportAction = new WorldTeleportAction(bix, biy);
+        expect(a.appendIntent(teleportAction)).toBeTruthy();
+        var spawnAction = new WorldSpawn(a, aix, aiy);
+        expect(world.appendIntent(spawnAction)).toBeTruthy();
+        world.nextStep();
+        expect(world.getCell(aix, aiy).isEmpty()).toBeTruthy();
+        expect(world.getCell(bix, biy).getOwner()).toEqual(a);
+    });
 });
