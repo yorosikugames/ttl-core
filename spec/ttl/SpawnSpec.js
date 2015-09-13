@@ -11,7 +11,7 @@ describe('Spawn', function () {
         var spawnAction = new WorldSpawn(a, ix, iy);
         expect(world.appendIntent(spawnAction)).toBeTruthy();
         expect(spawnAction.isDone()).toBeFalsy();
-        expect(a.getWorld()).toBeNull();
+        expect(a.getWorld()).not.toBeDefined();
         // 월드에 변화가 일어나는 것은 액션 등록 이후 첫 스테핑이 일어난 후이다.
         // 즉, 지금은 아무 변화 없다.
         expect(world.getCell(ix, iy).isEmpty()).toBeTruthy();
