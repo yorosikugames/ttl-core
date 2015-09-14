@@ -9,15 +9,15 @@ describe('Move', function() {
         var a = new Actor();
         //var dix = 1, diy = 0;
         var action = new WorldMoveAction(dix, diy);
-        var stepCost = 100;
+        var stepCost = 3;
         expect(stepCost > 0).toBeTruthy();
         action.appendCost(new StepCost(stepCost));
+        expect(action.getCostCount()).toBe(1);
         a.appendIntent(action);
 
-        //var aix = 0, aiy = 0;
-        expect(world.spawn(a1, aix, aiy)).toBeTruthy();
-        expect(world.getCell(aix, aiy).isOccupied()).toBeTruthy();
-        expect(world.getCell(aix, aiy).getOwner()).toEqual(a);
+        var spawnAction = new WorldSpawn(a, aix, aiy);
+        expect(world.appendIntent(spawnAction)).toBeTruthy();
+
         // 시간 비용이 만족되기 직전까지 월드 스테핑
         for (var i = 0; i < stepCost - 1; ++i) {
             expect(world.getStep()).toEqual(i);

@@ -18,8 +18,11 @@ describe('Death', function () {
         a.appendMod(mod);
         var curHp = a.getHp();
         world.nextStep();
+        expect(a.getHp()).toBe(0);
         expect(a.isDead()).toBeTruthy();
-        var action = new WorldMoveAction(dix, diy);
-        expect(a.appendIntent(action)).toThrow(new Error('Dead actor'));
+        var action = new WorldMoveAction(1, 0);
+        expect(function() {
+            a.appendIntent(action);
+        }).toThrow(new Error('Dead actor'));
     });
 });

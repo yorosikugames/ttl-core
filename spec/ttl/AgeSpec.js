@@ -8,6 +8,7 @@ describe('Age', function () {
     it('액터 나이 조회', function () {
         var a = new Actor();
         var ix = 0, iy = 0;
+        expect(a.getAge()).toEqual(0);
         var spawnAction = new WorldSpawn(a, ix, iy);
         expect(world.appendIntent(spawnAction)).toBeTruthy();
         world.nextStep();
@@ -17,9 +18,10 @@ describe('Age', function () {
         var ix2 = 1, iy2 = 0;
         var spawnAction2 = new WorldSpawn(a2, ix2, iy2);
         expect(world.appendIntent(spawnAction2)).toBeTruthy();
+        expect(a2.getAge()).toEqual(0);
         expect(a.getAge()).toEqual(2);
         world.nextStep();
         expect(a.getAge()).toEqual(3);
-        expect(a2getAge()).toEqual(1);
+        expect(a2.getAge()).toEqual(1);
     });
 });

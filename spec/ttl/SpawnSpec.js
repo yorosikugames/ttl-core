@@ -25,6 +25,8 @@ describe('Spawn', function () {
         expect(world.getCell(ix, iy).isEmpty()).toBeFalsy();
         expect(world.getCell(ix, iy).getOwner()).toEqual(a);
         expect(a.getWorld()).toEqual(world);
+        expect(a.getIx()).toEqual(ix);
+        expect(a.getIy()).toEqual(iy);
         expect(spawnAction.isDone()).toBeTruthy();
     });
 
@@ -41,7 +43,7 @@ describe('Spawn', function () {
         expect(world.getCell(ix, iy).isEmpty()).toBeTruthy();
         expect(spawnAction1.isDone()).toBeFalsy();
         expect(spawnAction2.isDone()).toBeFalsy();
-        var beforeStep = world.getStetp();
+        var beforeStep = world.getStep();
         var beforeOccupiedCellCount = world.getOccupiedCellCount();
         // 스테핑!!!
         world.nextStep();
@@ -53,6 +55,6 @@ describe('Spawn', function () {
         expect(world.getCell(ix, iy).isEmpty()).toBeFalsy();
         expect(world.getCell(ix, iy).getOwner()).toEqual(a1);
         expect(a1.getWorld()).toEqual(world);
-        expect(a2.getWorld()).toBeNull();
+        expect(a2.getWorld()).not.toBeDefined();
     });
 });
