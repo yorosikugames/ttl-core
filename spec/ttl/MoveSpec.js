@@ -1,10 +1,12 @@
 'use strict';
 describe('Move', function() {
+    var world;
+
     beforeEach(function() {
+        world = new World();
     });
 
     function testBasicMovement(aix, aiy, dix, diy) {
-        var world = new World();
         var actor = new Actor();
         var action = new WorldMoveAction(dix, diy);
         var stepCost = 3;
@@ -34,7 +36,8 @@ describe('Move', function() {
         expect(spawnAction.execute.calls.count()).toBe(0);
         expect(action.canBeAchieved()).not.toBeDefined(); // 액션이 달성될 수 있는가?
 
-        /***/world.nextStep();/***/
+        /***/
+        world.nextStep(); /***/
 
         expect(world.getStep()).toEqual(1);
         expect(spawnAction.execute.calls.count()).toBe(1);
@@ -50,7 +53,8 @@ describe('Move', function() {
         expect(action.isDone()).toBeFalsy(); // 액션이 수행됐는가?
         expect(action.canBeAchieved()).not.toBeDefined(); // 액션이 달성될 수 있는가?
 
-        /***/world.nextStep();/***/
+        /***/
+        world.nextStep(); /***/
 
         expect(world.getStep()).toEqual(2);
         expect(spawnAction.execute.calls.count()).toBe(1); // 끝난 액션은 더 실행되면 안된다.
@@ -66,7 +70,8 @@ describe('Move', function() {
         spyOn(actor, 'move').and.callThrough();
         spyOn(cell, 'move').and.callThrough();
 
-        /***/world.nextStep();/***/
+        /***/
+        world.nextStep(); /***/
 
         expect(actor.move.calls.count()).toBe(1);
         expect(cell.move.calls.count()).toBe(1);
@@ -89,17 +94,28 @@ describe('Move', function() {
         expect(afterCell.getOwner()).toEqual(actor);
     }
 
-    it('액터 하나 상하좌우 이동', function() {
+    it('액터 하나 이동 (상)', function() {
+        var aix = 5,
+            aiy = 8;
+        testBasicMovement(aix, aiy, 0, 1); // 위로 이동
+    });
+    it('액터 하나 이동 (하)', function() {
+        var aix = 5,
+            aiy = 8;
+        testBasicMovement(aix, aiy, 0, -1); // 아래로 이동
+    });
+    it('액터 하나 이동 (좌)', function() {
+        var aix = 5,
+            aiy = 8;
+        testBasicMovement(aix, aiy, -1, 0); // 좌로 이동
+    });
+    it('액터 하나 이동 (우)', function() {
         var aix = 5,
             aiy = 8;
         testBasicMovement(aix, aiy, 1, 0); // 우로 이동
-        testBasicMovement(aix, aiy, -1, 0); // 좌로 이동
-        testBasicMovement(aix, aiy, 0, 1); // 위로 이동
-        testBasicMovement(aix, aiy, 0, -1); // 아래로 이동
     });
 
     it('원점에서 액터 하나 좌로 이동 불가능함을 확인 (경계 조건)', function() {
-        var world = new World();
         var actor = new Actor();
         // (0,0)에서 왼쪽으로 이동하는 것은 불가능하다.
         var aix = 0,
@@ -120,17 +136,16 @@ describe('Move', function() {
         expect(actor.getIntentCount()).toEqual(0);
     });
 
-    function SpawnActorMoveDelta(aix, aiy, dix, diy) {
-        var world = new World();
-        var a = new Actor();
+    function SpawnActorMoveDelta(world, aix, aiy, dix, diy) {
+        var actor = new Actor();
         var moveAction = new WorldMoveAction(dix, diy);
-        expect(a.appendIntent(moveAction)).toBeTruthy();
-        var spawnAction = new WorldSpawn(a, aix, aiy);
+        expect(actor.appendIntent(moveAction)).toBeTruthy();
+        var spawnAction = new WorldSpawn(actor, aix, aiy);
         expect(world.appendIntent(spawnAction)).toBeTruthy();
         return {
-            actor: a,
-            spawn: spawnAction,
-            move: moveAction,
+            actor: actor,
+            spawnAction: spawnAction,
+            moveAction: moveAction,
         };
     }
 
@@ -138,9 +153,8 @@ describe('Move', function() {
         [A][B][ ] -> [ ][A][B]
     */
     it('액터 둘이 인접한 상태로 함께 오른쪽 방향으로 이동하기', function() {
-        var world = new World();
-        var set1 = SpawnActorMoveDelta(0, 0, 1, 0);
-        var set2 = SpawnActorMoveDelta(1, 0, 1, 0);
+        var set1 = SpawnActorMoveDelta(world, 0, 0, 1, 0);
+        var set2 = SpawnActorMoveDelta(world, 1, 0, 1, 0);
         world.nextStep();
         expect(world.getCell(0, 0).isEmpty()).toBeTruthy();
         expect(world.getCell(1, 0).getOwner()).toEqual(set1.actor);
@@ -148,7 +162,6 @@ describe('Move', function() {
     });
 
     it('같은 셀에 두 액터가 동시에 들어가려고 할 때 먼저 들어가길 요청한 액터 하나만 들어감', function() {
-        var world = new World();
         var set1 = SpawnActorMoveDelta(0, 0, 1, 0);
         var set2 = SpawnActorMoveDelta(2, 0, -1, 0);
         world.nextStep();
@@ -158,16 +171,17 @@ describe('Move', function() {
     });
 
     it('텔-레-포-트', function() {
-        var world = new World();
         var a = new Actor();
-        var aix = 0, aiy = 0;
-        var bix = 10, biy = 20;
-        var teleportAction = new WorldTeleportAction(bix, biy);
+        var aix = 0,
+            aiy = 0,
+            dix = 3,
+            diy = 7;
+        var teleportAction = new WorldMoveAction(dix, diy);
         expect(a.appendIntent(teleportAction)).toBeTruthy();
         var spawnAction = new WorldSpawn(a, aix, aiy);
         expect(world.appendIntent(spawnAction)).toBeTruthy();
         world.nextStep();
         expect(world.getCell(aix, aiy).isEmpty()).toBeTruthy();
-        expect(world.getCell(bix, biy).getOwner()).toEqual(a);
+        expect(world.getCell(aix + dix, aiy + diy).getOwner()).toEqual(a);
     });
 });
