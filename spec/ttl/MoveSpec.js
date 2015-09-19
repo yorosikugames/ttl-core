@@ -29,6 +29,11 @@ describe('Move', function() {
         spyOn(sc, 'nextStep').and.callThrough();
         spyOn(spawnAction, 'execute').and.callThrough();
         spyOn(cell, 'place').and.callThrough();
+        spyOn(world, 'appendMove').and.callThrough();
+        spyOn(world, 'commitMove').and.callThrough();
+        spyOn(world, 'commitSimpleMoveTreeWithRoot').and.callThrough();
+        spyOn(actor, 'move').and.callThrough();
+        spyOn(cell, 'move').and.callThrough();
 
         expect(world.appendIntent(spawnAction)).toBeTruthy();
         expect(cell.isEmpty()).toBeTruthy();
@@ -38,6 +43,8 @@ describe('Move', function() {
 
         /***/
         world.nextStep(); /***/
+
+        expect(world.commitMove.calls.count()).toBe(1);
 
         expect(world.getStep()).toEqual(1);
         expect(spawnAction.execute.calls.count()).toBe(1);
@@ -56,6 +63,8 @@ describe('Move', function() {
         /***/
         world.nextStep(); /***/
 
+        expect(world.commitMove.calls.count()).toBe(2);
+
         expect(world.getStep()).toEqual(2);
         expect(spawnAction.execute.calls.count()).toBe(1); // 끝난 액션은 더 실행되면 안된다.
         expect(actor.nextStep.calls.count()).toBe(2);
@@ -67,12 +76,30 @@ describe('Move', function() {
         expect(actor.getIx()).toBe(aix);
         expect(actor.getIy()).toBe(aiy);
 
-        spyOn(actor, 'move').and.callThrough();
-        spyOn(cell, 'move').and.callThrough();
+        expect(world.appendMove.calls.count()).toBe(0);
+        expect(world.commitSimpleMoveTreeWithRoot.calls.count()).toBe(0);
+        expect(actor.move.calls.count()).toBe(0);
+        expect(cell.move.calls.count()).toBe(0);
+
+        var beforeCell = world.getCell(aix, aiy);
+        var afterCell = world.getCell(aix + dix, aiy + diy);
+
+        expect(beforeCell.isEmpty()).toBeFalsy();
+        expect(afterCell.isEmpty()).toBeTruthy();
+
+        expect(world.commitSimpleMoveTreeWithRoot.calls.count()).toBe(0);
 
         /***/
-        world.nextStep(); /***/
+        world.nextStep(); /***/ // 이동 일어나는 스텝
 
+        expect(world.appendMove.calls.count()).toBe(1);
+
+        expect(beforeCell.isEmpty()).toBeTruthy();
+        expect(afterCell.isEmpty()).toBeFalsy();
+        expect(world.appendMove.calls.count()).toBe(1);
+        expect(world.appendMove).toHaveBeenCalledWith(actor, action, beforeCell, afterCell);
+        expect(world.commitMove.calls.count()).toBe(3);
+        expect(world.commitSimpleMoveTreeWithRoot.calls.count()).toBe(1);
         expect(actor.move.calls.count()).toBe(1);
         expect(cell.move.calls.count()).toBe(1);
 
@@ -150,24 +177,21 @@ describe('Move', function() {
     }
 
     /*
-        [A][B][ ] -> [ ][A][B]
+        [A][ ][B] -> [ ][?][ ] -> [ ][A][B]
     */
-    it('액터 둘이 인접한 상태로 함께 오른쪽 방향으로 이동하기', function() {
+    it('같은 셀에 두 액터가 동시에 들어가려고 할 때 가장 먼저 이동한 액터가 이동하고 나머지는 제자리', function() {
         var set1 = SpawnActorMoveDelta(world, 0, 0, 1, 0);
-        var set2 = SpawnActorMoveDelta(world, 1, 0, 1, 0);
+        var set2 = SpawnActorMoveDelta(world, 2, 0, -1, 0);
         world.nextStep();
         expect(world.getCell(0, 0).isEmpty()).toBeTruthy();
         expect(world.getCell(1, 0).getOwner()).toEqual(set1.actor);
         expect(world.getCell(2, 0).getOwner()).toEqual(set2.actor);
-    });
-
-    it('같은 셀에 두 액터가 동시에 들어가려고 할 때 먼저 들어가길 요청한 액터 하나만 들어감', function() {
-        var set1 = SpawnActorMoveDelta(0, 0, 1, 0);
-        var set2 = SpawnActorMoveDelta(2, 0, -1, 0);
-        world.nextStep();
-        expect(world.getCell(0, 0).isEmpty()).toBeTruthy();
-        expect(world.getCell(1, 0).getOwner()).toEqual(set1.actor);
-        expect(world.getCell(2, 0).getOwner()).toEqual(set2.actor);
+        expect(set1.spawnAction.isDone()).toBeTruthy();
+        expect(set2.spawnAction.isDone()).toBeTruthy();
+        expect(set1.moveAction.isDone()).toBeTruthy();
+        expect(set2.moveAction.isDone()).toBeTruthy();
+        expect(set1.moveAction.canBeAchieved()).toBeTruthy();
+        expect(set2.moveAction.canBeAchieved()).toBeFalsy();
     });
 
     it('텔-레-포-트', function() {
