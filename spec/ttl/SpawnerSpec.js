@@ -6,12 +6,9 @@ describe('Spawner', function () {
     });
 
     it('액터를 생.산.하.는. 스포너를 생성한다.', function () {
-        var a = new Actor();
+        var actor = new Actor();
         var spawner = new Spawner();
-        //var stepCost = 1;
-        //expect(stepCost > 0).toBeTruthy();
-        //spawner.appendSpawnCost(new StepCost(stepCost));
-        spawner.setPrefab(a);
+        spawner.setPrefab(actor);
         // 스포너 스폰
         var ix = 5, iy = 10;
         var sa = new WorldSpawn(spawner, ix, iy);
