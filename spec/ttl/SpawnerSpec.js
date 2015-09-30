@@ -88,13 +88,13 @@ describe('Spawner', function() {
 
         /* STEP 7 -> 8 */
         world.nextStep();
-        // 이제 의도를 넣었다.
+        // 이제 spawner가 스폰 의도를 월드에 등록한 상태
         expect(spawnCell1.isEmpty()).toBeTruthy();
         expect(world.getOccupiedCellCount()).toEqual(5);
 
         /* STEP 8 -> 9 */
         world.nextStep();
-        // spawner가 스폰시킨 액터 네 번째 스폰 완료
+        // spawner가 스폰시킨 액터 다섯 번째 스폰 완료
         expect(spawnCell1.isEmpty()).toBeFalsy();
         expect(world.getOccupiedCellCount()).toEqual(6);
     });
