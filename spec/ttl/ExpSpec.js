@@ -56,5 +56,20 @@ describe('Exp', function() {
 
         // 경험치는 더 획득하지 않아야 한다.
         expect(a1.getExp()).toBe(a1Exp + 100);
+
+        // a2가 있던 자리에 a22 스폰
+        var a22 = new Actor(),
+            sa22 = new WorldSpawn(a22, ix2, iy2);
+        expect(world.appendIntent(sa22)).toBeTruthy();
+        world.nextStep();
+
+        // a1이 a22를 근접공격하여 바로 죽인다.
+        var action2 = new WorldAttackAction(a22, attackPower);
+        a1.appendIntent(action2);
+
+        world.nextStep();
+
+        // 죽였으니 경험치 100 또 획득
+        expect(a1.getExp()).toBe(a1Exp + 100 + 100);
     });
 });
