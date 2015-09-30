@@ -35,6 +35,15 @@ describe('Attack', function() {
 
         expect(a1.getHp()).toEqual(a1Hp);
         expect(a2.getHp()).toEqual(a2Hp - attackPower);
+
+        // a1이 a2를 근접공격한다. (다시 한번)
+        a1.appendIntent(action);
+
+        // 스테핑
+        world.nextStep();
+
+        expect(a1.getHp()).toEqual(a1Hp);
+        expect(a2.getHp()).toEqual(a2Hp - attackPower * 2);
     });
 
     it('논타게팅 범위 공격', function() {
