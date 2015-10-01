@@ -51,10 +51,11 @@ describe('Exp', function() {
         world.nextStep();
 
         expect(a1.getHp()).toEqual(a1Hp);
-        expect(a2.getHp()).toEqual(a2Hp - attackPower * 2);
+        // 두 번째 공격은 1.1배수 공격이다.
+        expect(a2.getHp()).toEqual(a2Hp - attackPower - Math.round(attackPower * 1.1));
         expect(a2.isDead()).toBeTruthy();
 
-        // 경험치는 더 획득하지 않아야 한다.
+        // 죽은 액터를 한번 더 죽였다고 해도 경험치는 더 획득하지 않아야 한다.
         expect(a1.getExp()).toBe(a1Exp + 100);
 
         // a2가 있던 자리에 a22 스폰
@@ -69,7 +70,7 @@ describe('Exp', function() {
 
         world.nextStep();
 
-        // 죽였으니 경험치 100 또 획득
+        // 다른 액터를 죽였으니 경험치 100 또 획득
         expect(a1.getExp()).toBe(a1Exp + 100 + 100);
     });
 });
