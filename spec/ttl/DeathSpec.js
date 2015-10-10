@@ -31,7 +31,7 @@ describe('Death', function() {
             a.appendIntent(action);
         }).toThrow(new Error('Dead actor'));
 
-        let a2 = new Actor();
+        var a2 = new Actor();
         var sa2 = new WorldSpawn(a2, ix, iy);
         expect(world.appendIntent(sa2)).toBeTruthy();
         expect(a2.isDead()).toBeFalsy();
