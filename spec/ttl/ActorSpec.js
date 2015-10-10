@@ -17,4 +17,8 @@ describe('Actor', function() {
             actor.setIy(2);
         }).toThrow(new Error('Not attached to world'));
     });
+
+    it('낄낄낄', function() {
+        fail();
+    })
 });
