@@ -143,7 +143,8 @@ describe('DeltaLogger', function() {
         expect(dl.pop().toString()).toBe('moveto 2 1 1'); // 2번 액터가 먼저 움직이고
         expect(dl.pop().toString()).toBe('moveto 1 2 2'); // 1번 액터가 다음에 움직인것
         // 이것은 world.commitMove에서 목표셀 순서대로 액터를 이동시키기 때문이다.
-        // moveto의 경우 순서가 바뀌어도 결과에 영향을 주지 않는다.
+        // (셀 순서는 하단에서 상단으로, 좌에서 우로 정해진다. 즉 왼쪽 하단이 원점 셀)
+        // moveto 끼리는 순서가 바뀌어도 결과에 영향을 주지 않는다. (맞나?)
         expect(dl.pop().toString()).toBe('moveto 3 1 10');
         expect(dl.pop().toString()).toBe('moveto 4 1 20');
         expect(dl.pop().toString()).toBe('step 6');
