@@ -1,0 +1,20 @@
+{
+  "name": "ttl-core-node-js",
+  "version": "0.0.0",
+  "description": "ttl-core-node-js",
+  "main": "app.js",
+  "author": {
+    "name": "gasbank"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jasmine": "~0.3.1",
+    "grunt-template-jasmine-istanbul": "~0.2.5",
+    "grunt-contrib-jshint": "~0.11.3",
+    "jasmine": "~2.3.2",
+    "jshint": "~2.8.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  }
+}
