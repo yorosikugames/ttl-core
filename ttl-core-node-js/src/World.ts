@@ -1,6 +1,6 @@
 ﻿import Actor = require("./Actor.ts");
 import Cell = require("./Cell.ts");
-import Action = require("./EmptyAction");
+import IAction = require("./IAction.ts");
 import WorldMoveAction = require("./WorldMoveAction.ts");
 /// <reference path="./collections.ts" />
 
@@ -9,8 +9,8 @@ class World {
 
     step: number;
     spawnIdCounter: number;
-    intentQueue: Array<Action>;
-    actorIntentQueue: Array<Action>;
+    intentQueue: Array<IAction>;
+    actorIntentQueue: Array<[Actor, IAction]>;
     cells: Array<Array<Cell>>;
     beforeCellMap: collections.Dictionary<Cell, boolean>;
     afterCellMap: collections.Dictionary<Cell, boolean>;
@@ -86,7 +86,7 @@ class World {
         this.afterCellMap.setValue(afterCell, true);
     }
 
-    public appendActorIntent(actor: Actor, intent: string) {
+    public appendActorIntent(actor: Actor, intent: IAction) {
         this.actorIntentQueue.push({
             actor: actor,
             intent: intent

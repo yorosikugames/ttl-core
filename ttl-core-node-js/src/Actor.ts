@@ -1,7 +1,9 @@
 ﻿import World = require("./World.ts");
 import WorldMoveAction = require("./WorldMoveAction.ts");
-import Action = require("./EmptyAction.ts");
+import IAction = require("./IAction.ts");
 import Cell = require("./Cell.ts");
+import IModifier = require("./IModifier.ts");
+
 
 var globalActorIdCounter: number = 0;
 
@@ -13,8 +15,8 @@ class Actor {
     team: number;
     hp: number;
     age: number;
-    intentQueue: Array<Action>;
-    mods: Array<string>;
+    intentQueue: Array<IAction>;
+    mods: Array<IModifier>;
     ix: number;
     iy: number;
     exp: number;
@@ -103,7 +105,7 @@ class Actor {
         this.mods.length;
     }
 
-    public appendMod(mod: string) {
+    public appendMod(mod: IModifier) {
         this.mods.push(mod);
     }
 
@@ -117,7 +119,7 @@ class Actor {
         }
     }
 
-    public appendIntent(intent: string) {
+    public appendIntent(intent: IAction) {
         if (this.isDead()) {
             throw new Error('Dead actor');
         }
