@@ -38,6 +38,10 @@
     <Content Include="lib\jasmine-2.3.4\jasmine_favicon.png" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <TypeScriptCompile Include="lib\ttl\Cell.ts" />
+    <TypeScriptCompile Include="lib\ttl\DeltaLogger.ts" />
+    <TypeScriptCompile Include="lib\ttl\EmptyAction.ts" />
+    <TypeScriptCompile Include="lib\ttl\PoisonMod.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
   </ItemGroup>
   <ItemGroup>
