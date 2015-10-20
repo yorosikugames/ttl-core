@@ -2,13 +2,17 @@
 import Actor = require("./Actor.ts");
 
 interface IAction {
-    execute(world: World): void;
-    execute(actor: Actor): void;
-    nextStep(actor: Actor): void;
-    isCostMet(): boolean;
 
-    intent: IAction;
     actor: Actor;
+    intent: IAction;
+
+    validate(): boolean;
+    execute(): boolean;
+
+    nextStep(actor: Actor);
+    isCostMet();
+
+
 }
 
 export = IAction;

@@ -19,8 +19,13 @@ class WorldSpawn {
         return this.isDone;
     }
 
-    public execute(world: World) {
+    public validate() {
+    }
 
+    //public execute(world: World) {
+    public execute(entity: IEntity) {
+
+        var world = (World)entity;
         var c = world.getCell(this.ix, this.iy);
         if (c.isEmpty()) {
             c.place(this.actor);

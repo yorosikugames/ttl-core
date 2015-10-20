@@ -52,7 +52,9 @@ class World {
 
         for (var i = 0; i < this.actorIntentQueue.length; i++) {
             var actorIntent = this.actorIntentQueue[i];
-            actorIntent.intent.execute(actorIntent.actor);
+            var actor = actorIntent[0];
+            var intent = actorIntent[1];
+            intent.execute(actor);
         }
         this.actorIntentQueue = [];
 
@@ -87,10 +89,7 @@ class World {
     }
 
     public appendActorIntent(actor: Actor, intent: IAction) {
-        this.actorIntentQueue.push({
-            actor: actor,
-            intent: intent
-        });
+        this.actorIntentQueue.push([actor, intent]);
     }
 
     public forEachCell(callback: Function) {
@@ -113,7 +112,7 @@ class World {
         return new Cell(ix, iy);
     }
 
-    public appendIntent(intent: Action) {
+    public appendIntent(intent: IAction) {
         for (var i = 0; i < this.intentQueue.length; i++) {
             if (this.intentQueue[i] === intent) {
                 throw new Error('Duplicated intent');

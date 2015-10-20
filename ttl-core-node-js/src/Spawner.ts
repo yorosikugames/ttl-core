@@ -1,17 +1,21 @@
 ﻿import World = require("./World.ts");
 import WorldMoveAction = require("./WorldMoveAction.ts");
-import Action = require("./EmptyAction.ts");
 import Cell = require("./Cell.ts");
 import Actor = require("./Actor.ts");
 import WorldSpawn = require("./WorldSpawn.ts");
 
-class Spawner {
+import IAction = require("./IAction.ts");
+
+class Spawner implements IAction {
+
+    actor: Actor;
+    intent: IAction;
 
     world: World;
     team: number;
     hp: number;
     age: number;
-    intentQueue: Array<Action>;
+    intentQueue: Array<IAction>;
     mods: Array<string>;
     ix: number;
     iy: number;
@@ -53,12 +57,15 @@ class Spawner {
         return null;
     }
 
-    public nextStep() {
+    nextStep(actor: Actor) {
         var emptyCell = this.getEmptyCell();
         if (emptyCell) {
             var sa = new WorldSpawn(new Actor(), emptyCell.ix, emptyCell.iy);
             this.world.appendIntent(sa);
         }
+    }
+
+    execute(world: World) {
     }
 
     public canSpawn() {

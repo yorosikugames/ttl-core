@@ -44,12 +44,14 @@ var Spawner = (function () {
         }
         return null;
     };
-    Spawner.prototype.nextStep = function () {
+    Spawner.prototype.nextStep = function (actor) {
         var emptyCell = this.getEmptyCell();
         if (emptyCell) {
             var sa = new WorldSpawn(new Actor(), emptyCell.ix, emptyCell.iy);
             this.world.appendIntent(sa);
         }
+    };
+    Spawner.prototype.execute = function (world) {
     };
     Spawner.prototype.canSpawn = function () {
         return this.getEmptyCell() !== null;

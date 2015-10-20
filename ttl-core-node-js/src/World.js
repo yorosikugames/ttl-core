@@ -31,7 +31,9 @@ var World = (function () {
         });
         for (var i = 0; i < this.actorIntentQueue.length; i++) {
             var actorIntent = this.actorIntentQueue[i];
-            actorIntent.intent.execute(actorIntent.actor);
+            var actor = actorIntent[0];
+            var intent = actorIntent[1];
+            intent.execute(actor);
         }
         this.actorIntentQueue = [];
         this.commitMove();
@@ -57,10 +59,7 @@ var World = (function () {
         this.afterCellMap.setValue(afterCell, true);
     };
     World.prototype.appendActorIntent = function (actor, intent) {
-        this.actorIntentQueue.push({
-            actor: actor,
-            intent: intent
-        });
+        this.actorIntentQueue.push([actor, intent]);
     };
     World.prototype.forEachCell = function (callback) {
         for (var iy = 0; iy < 160; iy++) {

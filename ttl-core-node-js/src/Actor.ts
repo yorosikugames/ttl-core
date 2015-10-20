@@ -1,9 +1,8 @@
 ﻿import World = require("./World.ts");
 import WorldMoveAction = require("./WorldMoveAction.ts");
-import IAction = require("./IAction.ts");
 import Cell = require("./Cell.ts");
-import IModifier = require("./IModifier.ts");
-
+import IModifier = require("./IMOdifier.ts");
+import IAction = require("./IAction.ts");
 
 var globalActorIdCounter: number = 0;
 

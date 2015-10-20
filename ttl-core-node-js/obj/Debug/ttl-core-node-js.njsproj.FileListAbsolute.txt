@@ -1,1 +1,2 @@
 C:\Users\Administrator\Documents\ttl-core-node-js\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Administrator\Documents\ttl-core-js\ttl-core-node-js\obj\Debug\ttl-core-node-js.njsprojResolveAssemblyReference.cache

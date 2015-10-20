@@ -1,3 +1,4 @@
+var World = require("./World.ts");
 var WorldSpawn = (function () {
     function WorldSpawn(actor, ix, iy) {
         this.actor = actor;
@@ -7,7 +8,11 @@ var WorldSpawn = (function () {
     WorldSpawn.prototype.isDone = function () {
         return this.isDone;
     };
-    WorldSpawn.prototype.execute = function (world) {
+    WorldSpawn.prototype.validate = function () {
+    };
+    //public execute(world: World) {
+    WorldSpawn.prototype.execute = function (entity) {
+        var world = (World), entity;
         var c = world.getCell(this.ix, this.iy);
         if (c.isEmpty()) {
             c.place(this.actor);
