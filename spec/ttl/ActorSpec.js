@@ -2,7 +2,7 @@ describe('Actor', function() {
     var actor;
 
     beforeEach(function() {
-        actor = new Actor();
+        actor = new ttl.Actor();
     });
 
     it('Actor 생성 특성', function() {

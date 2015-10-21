@@ -1,39 +1,40 @@
-﻿class Cell {
+﻿module ttl {
 
-    owner: any;
-    ix: number;
-    iy: number;
+    export class Cell {
 
-    constructor(ix: number, iy: number) {
-        this.owner = null;
-        this.ix = ix;
-        this.iy = iy;
-    }
+        owner: any;
+        ix: number;
+        iy: number;
 
-    isEmpty() {
-        return this.owner === null;
-    }
+        constructor(ix: number, iy: number) {
+            this.owner = null;
+            this.ix = ix;
+            this.iy = iy;
+        }
 
-    isOccupied() {
-        return this.isEmpty() == false;
-    }
+        isEmpty() {
+            return this.owner === null;
+        }
 
-    place(a: any) {
-        this.owner = a;
-    }
+        isOccupied() {
+            return this.isEmpty() == false;
+        }
 
-    setEmpty() {
-        this.owner = null;
-    }
+        place(a: any) {
+            this.owner = a;
+        }
 
-    move(cell: Cell) {
-        cell.owner = this.owner;
-        this.owner = null;
-    }
+        setEmpty() {
+            this.owner = null;
+        }
 
-    getOwner() {
-        return this.owner;
+        move(cell: Cell) {
+            cell.owner = this.owner;
+            this.owner = null;
+        }
+
+        getOwner() {
+            return this.owner;
+        }
     }
 }
-
-export = Cell;

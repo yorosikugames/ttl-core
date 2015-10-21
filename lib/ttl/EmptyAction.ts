@@ -1,7 +1,7 @@
-﻿
-class EmptyAction {
-    execute(world: any) {
+﻿module ttl {
+
+    export class EmptyAction {
+        execute(world: any) {
+        }
     }
 }
-
-export = EmptyAction;

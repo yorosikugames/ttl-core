@@ -1,24 +1,25 @@
-﻿class DeltaLogger {
+﻿module ttl {
 
-    deltaList: Array<any>;
+    export class DeltaLogger {
 
-    constructor() {
-        this.deltaList = new Array<any>();
-    }
+        deltaList: Array<any>;
 
-    enqueue(delta: any) {
-        this.deltaList.push(delta);
-    }
+        constructor() {
+            this.deltaList = new Array<any>();
+        }
 
-    pop() {
-        if (this.deltaList.length > 0) {
-            var r = this.deltaList[0];
-            this.deltaList.splice(0, 1);
-            return r;
-        } else {
-            return null;
+        enqueue(delta: any) {
+            this.deltaList.push(delta);
+        }
+
+        pop() {
+            if (this.deltaList.length > 0) {
+                var r = this.deltaList[0];
+                this.deltaList.splice(0, 1);
+                return r;
+            } else {
+                return null;
+            }
         }
     }
 }
-
-export = DeltaLogger;
