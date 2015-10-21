@@ -6,7 +6,8 @@ describe('Death', function() {
 	var WorldSpawn = ttl.WorldSpawn;
 	var Cell = ttl.Cell;
 	var PoisonMod = ttl.PoisonMod;
-
+	var WorldMoveAction = ttl.WorldMoveAction;
+	var World = ttl.World;
 
     beforeEach(function() {
         world = new World();

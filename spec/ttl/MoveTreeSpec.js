@@ -7,6 +7,8 @@ describe('MoveTree', function() {
 	var PoisonMod = ttl.PoisonMod;
 	var DeltaLogger = ttl.DeltaLogger;
 	var EmptyAction = ttl.EmptyAction;
+	var WorldMoveAction = ttl.WorldMoveAction;
+	var World = ttl.World;
 	
     beforeEach(function() {
         world = new World();

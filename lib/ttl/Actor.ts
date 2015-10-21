@@ -175,7 +175,7 @@
             }
         }
 
-        commitMove(beforeCell: any, afterCell: any) {
+        commitMove(beforeCell: ttl.Cell, afterCell: ttl.Cell) {
             if (afterCell == null || afterCell.isOccupied()) {
                 return false; // interrupted
             } else {

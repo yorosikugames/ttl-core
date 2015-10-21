@@ -7,6 +7,8 @@ describe('Spawner', function() {
 	var DeltaLogger = ttl.DeltaLogger;
 	var EmptyAction = ttl.EmptyAction;
 	var Spawner = ttl.Spawner;
+	var WorldMoveAction = ttl.WorldMoveAction;
+	var World = ttl.World;
 	
     beforeEach(function() {
         world = new World();

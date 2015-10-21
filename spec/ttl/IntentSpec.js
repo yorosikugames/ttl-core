@@ -5,6 +5,7 @@ describe('Intent', function() {
 	var PoisonMod = ttl.PoisonMod;
 	var DeltaLogger = ttl.DeltaLogger;
 	var EmptyAction = ttl.EmptyAction;
+	var World = ttl.World;
 	
     it('의도 개수 측정이 제대로 되어야 한다.', function() {
         var world = new World();

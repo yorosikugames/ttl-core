@@ -5,6 +5,8 @@ describe('Exp', function() {
 	var Cell = ttl.Cell;
 	var PoisonMod = ttl.PoisonMod;
 	var DeltaLogger = ttl.DeltaLogger;
+	var WorldAttackAction = ttl.WorldAttackAction;
+	var World = ttl.World;
 	
     beforeEach(function() {
         world = new World();

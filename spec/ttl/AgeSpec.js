@@ -3,6 +3,7 @@ describe('Age', function () {
 	var Actor = ttl.Actor;
 	var WorldSpawn = ttl.WorldSpawn;
 	var Cell = ttl.Cell;
+	var World = ttl.World;
 
     beforeEach(function () {
         world = new World();
