@@ -1,5 +1,7 @@
 describe('Cell', function () {
     var cell;
+	var Cell = ttl.Cell;
+	var World = ttl.World;
 
     beforeEach(function() {
         cell = new Cell();

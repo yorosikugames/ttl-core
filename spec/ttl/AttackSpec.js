@@ -2,6 +2,12 @@
 describe('Attack', function() {
     var world;
 
+	var Actor = ttl.Actor;
+	var WorldSpawn = ttl.WorldSpawn;
+	var Cell = ttl.Cell;
+	var WorldAttackAction = ttl.WorldAttackAction;
+	var World = ttl.World;
+
     beforeEach(function() {
         world = new World();
     });

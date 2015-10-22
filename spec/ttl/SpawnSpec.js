@@ -1,6 +1,14 @@
 describe('Spawn', function () {
     var world;
-
+	var Actor = ttl.Actor;
+	var WorldSpawn = ttl.WorldSpawn;
+	var Cell = ttl.Cell;
+	var PoisonMod = ttl.PoisonMod;
+	var DeltaLogger = ttl.DeltaLogger;
+	var EmptyAction = ttl.EmptyAction;
+	var Spawner = ttl.Spawner;
+	var World = ttl.World;
+	
     beforeEach(function () {
         world = new World();
     });

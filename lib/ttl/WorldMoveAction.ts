@@ -1,23 +1,33 @@
-var ttl;
-(function (ttl) {
-    var WorldMoveAction = (function () {
-        function WorldMoveAction(dix, diy) {
+﻿
+module ttl {
+
+    export class WorldMoveAction {
+        dix: number;
+        diy: number;
+        costs: Array<any>;
+        done: boolean;
+        interrupted: boolean;
+
+        constructor(dix: number, diy: number) {
             if (dix == 0 && diy == 0) {
                 throw new Error("Not a valid movement");
             }
             this.dix = dix;
             this.diy = diy;
-            this.costs = new Array();
+            this.costs = new Array<any>();
             this.done = false;
             this.interrupted = false;
         }
-        WorldMoveAction.prototype.appendCost = function (cost) {
+
+        appendCost(cost: number) {
             this.costs.push(cost);
-        };
-        WorldMoveAction.prototype.getCostCount = function () {
+        }
+
+        getCostCount() {
             return this.costs.length;
-        };
-        WorldMoveAction.prototype.execute = function (actor) {
+        }
+
+        execute(actor: ttl.Actor) {
             actor.move(this, this.dix, this.diy);
             /*
             if (actor.move(this.dix, this.diy) == false) {
@@ -25,39 +35,40 @@ var ttl;
             }
             */
             this.done = true;
-        };
-        WorldMoveAction.prototype.setInterrupted = function (b) {
+        }
+
+        setInterrupted(b: boolean) {
             this.interrupted = b;
-        };
-        WorldMoveAction.prototype.isCostMet = function () {
+        }
+
+        isCostMet() {
             for (var i = 0; i < this.costs.length; i++) {
                 if (this.costs[i].isCostMet() == false) {
                     return false;
                 }
             }
             return true;
-        };
-        WorldMoveAction.prototype.isDone = function () {
+        }
+
+        isDone() {
             return this.done;
-        };
-        WorldMoveAction.prototype.canBeAchieved = function () {
+        }
+
+        canBeAchieved() {
             if (this.interrupted == true) {
                 return false;
-            }
-            else if (this.isDone()) {
+            } else if (this.isDone()) {
                 return true;
-            }
-            else {
+            } else {
                 return undefined;
             }
-        };
-        WorldMoveAction.prototype.nextStep = function (actor) {
+        }
+
+        nextStep(actor: ttl.Actor) {
             for (var i = 0; i < this.costs.length; i++) {
                 this.costs[i].nextStep();
             }
-        };
-        return WorldMoveAction;
-    })();
-    ttl.WorldMoveAction = WorldMoveAction;
-})(ttl || (ttl = {}));
-//# sourceMappingURL=WorldMoveAction.js.map
+        }
+    }
+
+}

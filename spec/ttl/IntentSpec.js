@@ -1,4 +1,12 @@
 describe('Intent', function() {
+	var Actor = ttl.Actor;
+	var WorldSpawn = ttl.WorldSpawn;
+	var Cell = ttl.Cell;
+	var PoisonMod = ttl.PoisonMod;
+	var DeltaLogger = ttl.DeltaLogger;
+	var EmptyAction = ttl.EmptyAction;
+	var World = ttl.World;
+	
     it('의도 개수 측정이 제대로 되어야 한다.', function() {
         var world = new World();
         expect(world.getIntentCount()).toBe(0);

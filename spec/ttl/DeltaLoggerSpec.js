@@ -1,6 +1,13 @@
 describe('DeltaLogger', function() {
     'use strict';
-
+	var Actor = ttl.Actor;
+	var WorldSpawn = ttl.WorldSpawn;
+	var Cell = ttl.Cell;
+	var PoisonMod = ttl.PoisonMod;
+	var DeltaLogger = ttl.DeltaLogger;
+	var WorldMoveAction = ttl.WorldMoveAction;
+	var World = ttl.World;
+	
     it('델타로거 미지정 시 enqueue는 아무 일도 하지 않는다.', function() {
         var world = new World();
         expect(world.enqueue('do nothing')).not.toBeDefined();

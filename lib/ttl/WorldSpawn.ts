@@ -1,16 +1,25 @@
-var ttl;
-(function (ttl) {
-    var WorldSpawn = (function () {
-        function WorldSpawn(a, ix, iy) {
+﻿module ttl {
+
+    export class WorldSpawn {
+
+        actor: any;
+        ix: any;
+        iy: any;
+        done: boolean;
+
+        constructor(a: any, ix: any, iy: any) {
             this.actor = a;
             this.ix = ix;
             this.iy = iy;
             this.done = false;
         }
-        WorldSpawn.prototype.isDone = function () {
+
+        isDone() {
             return this.done;
-        };
-        WorldSpawn.prototype.execute = function (world) {
+        }
+
+        execute(world: any) {
+
             var c = world.getCell(this.ix, this.iy);
             if (c.isEmpty()) {
                 c.place(this.actor);
@@ -18,11 +27,9 @@ var ttl;
                 this.actor.setIx(this.ix);
                 this.actor.setIy(this.iy);
                 this.done = true;
+
                 world.enqueueBasic('spawn ' + this.actor.getSpawnId() + ' ' + this.ix + ' ' + this.iy);
             }
-        };
-        return WorldSpawn;
-    })();
-    ttl.WorldSpawn = WorldSpawn;
-})(ttl || (ttl = {}));
-//# sourceMappingURL=WorldSpawn.js.map
+        }
+    }
+}
