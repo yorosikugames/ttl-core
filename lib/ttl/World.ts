@@ -1,6 +1,5 @@
 ﻿
 module ttl {
-    declare class Map { }
 
     export class World {
 
@@ -9,8 +8,8 @@ module ttl {
         intentQueue: Array<any>;
         actorIntentQueue: Array<any>;
         cells: Array<any>;
-        beforeCellMap: any;
-        afterCellMap: any;
+        beforeCellMap: Map<Cell, boolean>;
+        afterCellMap: Map<Cell, boolean>;
         dl: any;
 
         constructor() {
@@ -25,8 +24,8 @@ module ttl {
                     this.cells[iy].push(new ttl.Cell(ix, iy));
                 }
             }
-            this.beforeCellMap = new Map();
-            this.afterCellMap = new Map();
+            this.beforeCellMap = new Map<Cell, boolean>();
+            this.afterCellMap = new Map<Cell, boolean>();
             this.dl = {
                 enqueue: (delta) => { },
             };
@@ -144,7 +143,7 @@ module ttl {
         }
 
         // actor가 action을 통해 beforeCell에서 afterCell로 이동하려고 한다.
-        appendMove(actor: ttl.Actor, action: any, beforeCell: any, afterCell: any) {
+        appendMove(actor: ttl.Actor, action: any, beforeCell: Cell, afterCell: Cell) {
             beforeCell.afterCell = afterCell;
             beforeCell.moveActor = actor;
             beforeCell.moveAction = action;
@@ -158,7 +157,7 @@ module ttl {
             this.afterCellMap.set(afterCell, true);
         }
 
-        commitCycleMoveTree(cell: any) {
+        commitCycleMoveTree(cell: Cell) {
             var cursor = cell;
             var circularCheck = new Array<any>();
             do {
@@ -265,9 +264,9 @@ module ttl {
                     this.commitCycleMoveTree(beforeCell);
                 }
             }
- 
-            this.afterCellMap.forEach(function (flag, cell) {
-                cell.beforeCells = new Array<any>();
+
+            this.afterCellMap.forEach(function (flag: boolean, cell: Cell) {
+                cell.beforeCells = new Array<Cell>();
             });
  
             //this.afterCellMap.keys().forEach(function (cell, index) {
@@ -282,12 +281,12 @@ module ttl {
             }
         }
 
-        hasOneOrMoreBeforeCells(cell: any) {
+        hasOneOrMoreBeforeCells(cell: Cell) {
             return typeof cell.beforeCells !== 'undefined' &&
                 cell.beforeCells.length > 0;
         }
 
-        commitSimpleMoveTreeWithRoot(cell: any) {
+        commitSimpleMoveTreeWithRoot(cell: Cell) {
             if (this.hasOneOrMoreBeforeCells(cell)) {
                 var beforeCell = cell.beforeCells[0];
                 beforeCell.getOwner().commitMove(beforeCell, cell);

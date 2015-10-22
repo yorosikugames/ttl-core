@@ -5,6 +5,10 @@
         owner: any;
         ix: number;
         iy: number;
+        beforeCells: Array<Cell>;
+        afterCell: Cell;
+        moveActor: ttl.Actor;
+        moveAction: any;
 
         constructor(ix: number, iy: number) {
             this.owner = null;
