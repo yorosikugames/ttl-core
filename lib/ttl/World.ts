@@ -247,11 +247,17 @@ module ttl {
             // afterCellMap 중 비어 있는 셀이 있다면
             // 해당 셀을 루트로 하는 이동 트리가 하나 구성됨을 뜻한다.
             // 이러한 이동 트리를 'simple move tree'라고 한다.
-            for (var cell of this.afterCellMap.keys()) {
+            var thisWorld = this;
+            this.afterCellMap.forEach(function (flag, cell) {
                 if (cell.isEmpty()) {
-                    this.commitSimpleMoveTreeWithRoot(cell);
+                    thisWorld.commitSimpleMoveTreeWithRoot(cell);
                 }
-            }
+            });
+            //for (var cell in this.afterCellMap.keys()) {
+            //    if (cell.isEmpty()) {
+            //        this.commitSimpleMoveTreeWithRoot(cell);
+            //    }
+            //}
 
             while (this.beforeCellMap.size > 0) {
                 var beforeCell = this.beforeCellMap.keys().next().value;
@@ -259,10 +265,17 @@ module ttl {
                     this.commitCycleMoveTree(beforeCell);
                 }
             }
-
-            for (var cell of this.afterCellMap.keys()) {
+ 
+            this.afterCellMap.forEach(function (flag, cell) {
                 cell.beforeCells = new Array<any>();
-            }
+            });
+ 
+            //this.afterCellMap.keys().forEach(function (cell, index) {
+            //    cell.beforeCells = new Array<any>();
+            //});
+            //for (let cell of this.afterCellMap.keys()) {
+            //    cell.beforeCells = new Array<any>();
+            //}
 
             if (this.beforeCellMap.size > 0) {
                 throw new Error('beforeCellMap should be empty at this point');
