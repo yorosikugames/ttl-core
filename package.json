@@ -1,18 +1,15 @@
 {
-  "name": "ttl-core",
-  "version": "0.1.0",
-  "author": {
-    "name": "gasbank"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-jasmine": "~0.3.1",
-    "grunt-template-jasmine-istanbul": "~0.2.5",
-    "grunt-contrib-jshint": "~0.11.3",
-    "jasmine": "~2.3.2",
-    "jshint": "~2.8.0"
-  },
-  "scripts": {
-    "test": "jasmine"
+    "name": "ttl-core"
+  , "version": "0.0.1"
+  , "description": "core of transport tycoon lee"
+  , "keywords": ["ttl"]
+  , "author": "Julian Ken (faults904@gmail.com)"
+  , "engines": { "node": ">= 0.4.x < 0.7.0" }
+  , "scripts": {
+    "test": "mocha"
+  }
+  , "devDependencies": {
+    "chai" : "3.4.0",
+    "mocha" : "2.3.3"
   }
 }
