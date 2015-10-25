@@ -1,4 +1,3 @@
-var chai = require('chai');
 var expect = chai.expect;
 describe('User Model Unit Tests:', function () {
     describe('2 + 4', function () {
