@@ -1,11 +1,55 @@
+var globalIDCounter = 0;
 
-module ttl {
-  interface IEntity {
-  }
+class Base {
+    name: string;
+    globalId: number;
 
-  interface IComponent {
-  }
+    constructor(name: string) {
+        this.name = name;
+        this.globalId = globalIDCounter++;
+    }
 
-  interface ISystem {
-  }
+    print(): void {
+        console.log(JSON.stringify(this, null, 4));
+    }
+}
+
+export class Entity extends Base {
+
+    components: Map<number, Component>;
+
+    constructor(name: string) {
+        super('entity_' + name);
+        this.components = new Map<number, Component>();
+    }
+
+    addComponent(component: Component): boolean {
+        if (this.components.has(component.globalId)) {
+            return false;
+        }
+        this.components[component.globalId] = component;
+        return true;
+    }
+
+    removeComponent(component: Component): boolean {
+        return this.components.delete(component.globalId);
+    }
+
+}
+
+export abstract class Component extends Base {
+
+    constructor(name: string) {
+        super('component_' + name);
+    }
+
+}
+
+export abstract class System extends Base {
+
+    constructor(name: string) {
+        super('system_' + name);
+    }
+
+    abstract process(entityMap: Map<number, Entity>): void;
 }

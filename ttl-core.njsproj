@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>ttl-core</Name>
+    <RootNamespace>ttl-core</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>7fd80e0f-10a1-449f-a6d6-9763c8d92f86</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.ts</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <EnableTypeScript>true</EnableTypeScript>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="test\index.html" />
+    <TypeScriptCompile Include="app.ts" />
+    <Content Include=".gitignore" />
+    <Content Include=".travis.yml" />
+    <Content Include="lib\chai\.npmignore" />
+    <Content Include="lib\chai\bower.json" />
+    <Content Include="lib\chai\CONTRIBUTING.md" />
+    <Content Include="lib\chai\History.md" />
+    <Content Include="lib\chai\package.json" />
+    <Content Include="lib\chai\README.md" />
+    <Content Include="lib\chai\ReleaseNotes.md" />
+    <Content Include="lib\mocha\bin\.eslintrc" />
+    <Content Include="lib\mocha\bin\mocha" />
+    <Content Include="lib\mocha\bin\_mocha" />
+    <Content Include="lib\mocha\HISTORY.md" />
+    <Content Include="lib\mocha\images\error.png" />
+    <Content Include="lib\mocha\images\ok.png" />
+    <Content Include="lib\mocha\lib\reporters\templates\coverage.jade" />
+    <Content Include="lib\mocha\lib\reporters\templates\menu.jade" />
+    <Content Include="lib\mocha\lib\reporters\templates\script.html" />
+    <Content Include="lib\mocha\lib\reporters\templates\style.html" />
+    <Content Include="lib\mocha\lib\template.html" />
+    <Content Include="lib\mocha\LICENSE" />
+    <Content Include="lib\mocha\mocha.css" />
+    <Content Include="lib\mocha\package.json" />
+    <Content Include="lib\mocha\README.md" />
+    <Content Include="package.json" />
+    <TypeScriptCompile Include="lib\ttl\component\Health.ts" />
+    <TypeScriptCompile Include="lib\ttl\component\Position.ts" />
+    <TypeScriptCompile Include="lib\ttl\interfaces.ts" />
+    <TypeScriptCompile Include="lib\ttl\system\Move.ts" />
+    <TypeScriptCompile Include="test\MoveSpec.ts" />
+    <TypeScriptCompile Include="test\test.ts" />
+    <TypeScriptCompile Include="typings\chai\chai.d.ts" />
+    <TypeScriptCompile Include="typings\es6\es.6.d.ts" />
+    <TypeScriptCompile Include="typings\mocha\mocha.d.ts" />
+    <TypeScriptCompile Include="typings\tsd.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
+    <Folder Include="lib\" />
+    <Folder Include="lib\chai\" />
+    <Folder Include="lib\chai\lib\" />
+    <Folder Include="lib\chai\lib\chai\" />
+    <Folder Include="lib\chai\lib\chai\core\" />
+    <Folder Include="lib\chai\lib\chai\interface\" />
+    <Folder Include="lib\chai\lib\chai\utils\" />
+    <Folder Include="lib\mocha\" />
+    <Folder Include="lib\mocha\bin\" />
+    <Folder Include="lib\mocha\images\" />
+    <Folder Include="lib\mocha\lib\" />
+    <Folder Include="lib\mocha\lib\browser\" />
+    <Folder Include="lib\mocha\lib\interfaces\" />
+    <Folder Include="lib\mocha\lib\reporters\" />
+    <Folder Include="lib\mocha\lib\reporters\templates\" />
+    <Folder Include="lib\ttl\" />
+    <Folder Include="lib\ttl\entity\" />
+    <Folder Include="lib\ttl\component\" />
+    <Folder Include="lib\ttl\system\" />
+    <Folder Include="test\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\chai\" />
+    <Folder Include="typings\mocha\" />
+    <Folder Include="typings\es6\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="js\functions.js" />
+    <Compile Include="lib\chai\chai.js" />
+    <Compile Include="lib\chai\index.js" />
+    <Compile Include="lib\chai\karma.conf.js" />
+    <Compile Include="lib\chai\karma.sauce.js" />
+    <Compile Include="lib\chai\lib\chai.js" />
+    <Compile Include="lib\chai\lib\chai\assertion.js" />
+    <Compile Include="lib\chai\lib\chai\config.js" />
+    <Compile Include="lib\chai\lib\chai\core\assertions.js" />
+    <Compile Include="lib\chai\lib\chai\interface\assert.js" />
+    <Compile Include="lib\chai\lib\chai\interface\expect.js" />
+    <Compile Include="lib\chai\lib\chai\interface\should.js" />
+    <Compile Include="lib\chai\lib\chai\utils\addChainableMethod.js" />
+    <Compile Include="lib\chai\lib\chai\utils\addMethod.js" />
+    <Compile Include="lib\chai\lib\chai\utils\addProperty.js" />
+    <Compile Include="lib\chai\lib\chai\utils\expectTypes.js" />
+    <Compile Include="lib\chai\lib\chai\utils\flag.js" />
+    <Compile Include="lib\chai\lib\chai\utils\getActual.js" />
+    <Compile Include="lib\chai\lib\chai\utils\getEnumerableProperties.js" />
+    <Compile Include="lib\chai\lib\chai\utils\getMessage.js" />
+    <Compile Include="lib\chai\lib\chai\utils\getName.js" />
+    <Compile Include="lib\chai\lib\chai\utils\getPathInfo.js" />
+    <Compile Include="lib\chai\lib\chai\utils\getPathValue.js" />
+    <Compile Include="lib\chai\lib\chai\utils\getProperties.js" />
+    <Compile Include="lib\chai\lib\chai\utils\hasProperty.js" />
+    <Compile Include="lib\chai\lib\chai\utils\index.js" />
+    <Compile Include="lib\chai\lib\chai\utils\inspect.js" />
+    <Compile Include="lib\chai\lib\chai\utils\objDisplay.js" />
+    <Compile Include="lib\chai\lib\chai\utils\overwriteChainableMethod.js" />
+    <Compile Include="lib\chai\lib\chai\utils\overwriteMethod.js" />
+    <Compile Include="lib\chai\lib\chai\utils\overwriteProperty.js" />
+    <Compile Include="lib\chai\lib\chai\utils\test.js" />
+    <Compile Include="lib\chai\lib\chai\utils\transferFlags.js" />
+    <Compile Include="lib\chai\sauce.browsers.js" />
+    <Compile Include="lib\mocha\bin\options.js" />
+    <Compile Include="lib\mocha\index.js" />
+    <Compile Include="lib\mocha\lib\browser\debug.js" />
+    <Compile Include="lib\mocha\lib\browser\events.js" />
+    <Compile Include="lib\mocha\lib\browser\progress.js" />
+    <Compile Include="lib\mocha\lib\browser\tty.js" />
+    <Compile Include="lib\mocha\lib\context.js" />
+    <Compile Include="lib\mocha\lib\hook.js" />
+    <Compile Include="lib\mocha\lib\interfaces\bdd.js" />
+    <Compile Include="lib\mocha\lib\interfaces\common.js" />
+    <Compile Include="lib\mocha\lib\interfaces\exports.js" />
+    <Compile Include="lib\mocha\lib\interfaces\index.js" />
+    <Compile Include="lib\mocha\lib\interfaces\qunit.js" />
+    <Compile Include="lib\mocha\lib\interfaces\tdd.js" />
+    <Compile Include="lib\mocha\lib\mocha.js" />
+    <Compile Include="lib\mocha\lib\ms.js" />
+    <Compile Include="lib\mocha\lib\pending.js" />
+    <Compile Include="lib\mocha\lib\reporters\base.js" />
+    <Compile Include="lib\mocha\lib\reporters\doc.js" />
+    <Compile Include="lib\mocha\lib\reporters\dot.js" />
+    <Compile Include="lib\mocha\lib\reporters\html-cov.js" />
+    <Compile Include="lib\mocha\lib\reporters\html.js" />
+    <Compile Include="lib\mocha\lib\reporters\index.js" />
+    <Compile Include="lib\mocha\lib\reporters\json-cov.js" />
+    <Compile Include="lib\mocha\lib\reporters\json-stream.js" />
+    <Compile Include="lib\mocha\lib\reporters\json.js" />
+    <Compile Include="lib\mocha\lib\reporters\landing.js" />
+    <Compile Include="lib\mocha\lib\reporters\list.js" />
+    <Compile Include="lib\mocha\lib\reporters\markdown.js" />
+    <Compile Include="lib\mocha\lib\reporters\min.js" />
+    <Compile Include="lib\mocha\lib\reporters\nyan.js" />
+    <Compile Include="lib\mocha\lib\reporters\progress.js" />
+    <Compile Include="lib\mocha\lib\reporters\spec.js" />
+    <Compile Include="lib\mocha\lib\reporters\tap.js" />
+    <Compile Include="lib\mocha\lib\reporters\xunit.js" />
+    <Compile Include="lib\mocha\lib\runnable.js" />
+    <Compile Include="lib\mocha\lib\runner.js" />
+    <Compile Include="lib\mocha\lib\suite.js" />
+    <Compile Include="lib\mocha\lib\test.js" />
+    <Compile Include="lib\mocha\lib\utils.js" />
+    <Compile Include="lib\mocha\mocha.js" />
+    <Compile Include="lib\ttl\component\Health.js" />
+    <Compile Include="lib\ttl\component\Position.js" />
+    <Compile Include="lib\ttl\interfaces.js" />
+    <Compile Include="lib\ttl\system\Move.js" />
+    <Compile Include="test\test.js" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
