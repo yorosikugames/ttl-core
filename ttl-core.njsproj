@@ -64,8 +64,8 @@
     <TypeScriptCompile Include="lib\ttl\component\Position.ts" />
     <TypeScriptCompile Include="lib\ttl\interfaces.ts" />
     <TypeScriptCompile Include="lib\ttl\system\Move.ts" />
-    <TypeScriptCompile Include="test\MoveSpec.ts" />
-    <TypeScriptCompile Include="test\test.ts" />
+    <TypeScriptCompile Include="test\HealthComponentSpec.ts" />
+    <TypeScriptCompile Include="test\MoveSystemSpec.ts" />
     <TypeScriptCompile Include="typings\chai\chai.d.ts" />
     <TypeScriptCompile Include="typings\es6\es.6.d.ts" />
     <TypeScriptCompile Include="typings\mocha\mocha.d.ts" />
@@ -88,6 +88,7 @@
     <Folder Include="lib\mocha\lib\interfaces\" />
     <Folder Include="lib\mocha\lib\reporters\" />
     <Folder Include="lib\mocha\lib\reporters\templates\" />
+    <Folder Include="lib\requirejs\" />
     <Folder Include="lib\ttl\" />
     <Folder Include="lib\ttl\entity\" />
     <Folder Include="lib\ttl\component\" />
@@ -174,11 +175,12 @@
     <Compile Include="lib\mocha\lib\test.js" />
     <Compile Include="lib\mocha\lib\utils.js" />
     <Compile Include="lib\mocha\mocha.js" />
+    <Compile Include="lib\requirejs\require.js" />
     <Compile Include="lib\ttl\component\Health.js" />
     <Compile Include="lib\ttl\component\Position.js" />
     <Compile Include="lib\ttl\interfaces.js" />
     <Compile Include="lib\ttl\system\Move.js" />
-    <Compile Include="test\test.js" />
+    <Compile Include="test\SpecRunner.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
