@@ -1,4 +1,4 @@
-var globalIDCounter = 0;
+export var globalIDCounter = 0;
 
 class Base {
     name: string;
@@ -27,7 +27,7 @@ export class Entity extends Base {
         if (this.components.has(component.globalId)) {
             return false;
         }
-        this.components[component.globalId] = component;
+        this.components.set(component.globalId, component);
         return true;
     }
 

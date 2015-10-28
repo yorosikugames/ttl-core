@@ -16,19 +16,17 @@ var expect = chai.expect;
 /**
  * Unit tests
  */
-describe('Health Component Unit Test:', () => {
-    describe('2 + 5', () => {
-        it('should be 6', (done) => {
-
+describe('Component Unit Test - Health', () => {
+    describe('Create Health Component with hp 100', () => {
+        it('hp sould be 100', (done) => {
             var health = new HealthComponent(100);
-            console.log(health);
-
-            expect(2 + 5).to.equals(7);
+            expect(health.hp).to.equals(100);
             done();
         });
 
-        it('should not be 7', (done) => {
-            expect(2 + 4).to.not.equals(7);
+        it('hp should not be 101', (done) => {
+            var health = new HealthComponent(100);
+            expect(health.hp).to.not.equals(101);
             done();
         });
     });

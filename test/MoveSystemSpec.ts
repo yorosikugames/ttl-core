@@ -5,7 +5,11 @@
  * Module dependencies.
  */
 import chai = require('chai');
+import interfaces = require('../lib/ttl/interfaces');
+var Entity = interfaces.Entity;
+import HealthComponent = require('../lib/ttl/component/Health');
 import PositionComponent = require('../lib/ttl/component/Position');
+import MoveSystem = require('../lib/ttl/system/Move');
 
 /**
  * Globals
@@ -16,21 +20,22 @@ var expect = chai.expect;
 /**
  * Unit tests
  */
-describe('Move System Unit Test:', () => {
-    describe('2 + 5', () => {
-        it('should be 6', (done) => {
-
-            var position = new PositionComponent(10, 5);
-            console.log(position);
-
-            expect(2 + 5).to.equals(6);
+describe('System Unit Test - Move', () => {
+    describe('Move System Creation and Process', () => {
+        it('Create Move System without Exception', (done) => {
+            var moveSystem = new MoveSystem();
             done();
         });
 
-        it('should not be 7', (done) => {
-            expect(2 + 4).to.not.equals(7);
+        it('Process with Entity Map', (done) => {
+
+            var moveSystem = new MoveSystem();
+            var entity = new Entity('npc');
+            var entityMap = new Map<number, interfaces.Entity>();
+            moveSystem.process(entityMap);
             done();
         });
     });
+
 });
 

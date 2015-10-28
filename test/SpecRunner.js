@@ -23,7 +23,10 @@ define(function (require) {
     
     require([
         'MoveSystemSpec.js',
+        'GlobalIdSpec.js',
+        'EntitySpec.js',
         'HealthComponentSpec.js',
+        'PositionComponentSpec.js',
     ], function (require) {
         mocha.run();
     });
