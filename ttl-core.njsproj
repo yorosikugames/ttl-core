@@ -64,6 +64,9 @@
     <TypeScriptCompile Include="lib\ttl\component\Position.ts" />
     <TypeScriptCompile Include="lib\ttl\interfaces.ts" />
     <TypeScriptCompile Include="lib\ttl\system\Move.ts" />
+    <TypeScriptCompile Include="test\EntitySpec.ts" />
+    <TypeScriptCompile Include="test\GlobalIdSpec.ts" />
+    <TypeScriptCompile Include="test\PositionComponentSpec.ts" />
     <TypeScriptCompile Include="test\HealthComponentSpec.ts" />
     <TypeScriptCompile Include="test\MoveSystemSpec.ts" />
     <TypeScriptCompile Include="typings\chai\chai.d.ts" />
@@ -100,6 +103,7 @@
     <Folder Include="typings\es6\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="app.js" />
     <Compile Include="js\functions.js" />
     <Compile Include="lib\chai\chai.js" />
     <Compile Include="lib\chai\index.js" />
@@ -180,6 +184,11 @@
     <Compile Include="lib\ttl\component\Position.js" />
     <Compile Include="lib\ttl\interfaces.js" />
     <Compile Include="lib\ttl\system\Move.js" />
+    <Compile Include="test\EntitySpec.js" />
+    <Compile Include="test\GlobalIdSpec.js" />
+    <Compile Include="test\HealthComponentSpec.js" />
+    <Compile Include="test\MoveSystemSpec.js" />
+    <Compile Include="test\PositionComponentSpec.js" />
     <Compile Include="test\SpecRunner.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
