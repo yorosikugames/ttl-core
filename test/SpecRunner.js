@@ -27,6 +27,7 @@ define(function (require) {
         'EntitySpec.js',
         'HealthComponentSpec.js',
         'PositionComponentSpec.js',
+        'StepCostSpec.js',
     ], function (require) {
         mocha.run();
     });

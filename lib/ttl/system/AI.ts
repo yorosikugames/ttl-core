@@ -1,10 +1,10 @@
 ﻿import interfaces = require('../interfaces');
 
 
-class MoveSystem extends interfaces.System {
+class AISystem extends interfaces.System {
 
     constructor() {
-        super('move');
+        super('ai');
     }
 
     process(entityMap: Map<string, interfaces.Entity>): void {
@@ -13,11 +13,12 @@ class MoveSystem extends interfaces.System {
             var entity = entityMap.get(entityName);
             for (var componentName in entity.components.keys()) {
                 var component = entity.components.get(componentName);
-                if (component.name != "component_position") continue;
+                if (component.name != "component_ai") continue;
+                // do something in here
             }
         }
 
     }
 }
 
-export = MoveSystem;
+export = AISystem;

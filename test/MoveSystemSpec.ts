@@ -31,7 +31,7 @@ describe('System Unit Test - Move', () => {
 
             var moveSystem = new MoveSystem();
             var entity = new Entity('npc');
-            var entityMap = new Map<number, interfaces.Entity>();
+            var entityMap = new Map<string, interfaces.Entity>();
             moveSystem.process(entityMap);
             done();
         });
