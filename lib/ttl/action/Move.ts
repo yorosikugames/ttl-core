@@ -3,17 +3,22 @@
 
 class MoveAction extends interfaces.Action {
 
+    target: interfaces.Entity;
     dx: number;
     dy: number;
 
-    constructor(preCost: interfaces.ICost, postCost: interfaces.ICost, dx: number, dy: number) {
+    constructor(preCost: interfaces.ICost, postCost: interfaces.ICost, target: interfaces.Entity, dx: number, dy: number) {
         super('move', preCost, postCost);
+        this.target = target;
         this.dx = dx;
         this.dy = dy;
     }
 
-    doExecute(): boolean {
-        return false;
+    protected doExecute(): boolean {
+
+        var moveComponent = this.target.components.get("move_component");
+
+        return true;
     }
 }
 

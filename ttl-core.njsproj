@@ -69,7 +69,10 @@
     <TypeScriptCompile Include="lib\ttl\system\Move.ts" />
     <TypeScriptCompile Include="test\EntitySpec.ts" />
     <TypeScriptCompile Include="test\GlobalIdSpec.ts" />
-    <TypeScriptCompile Include="test\StepCostSpec.ts" />
+    <TypeScriptCompile Include="test\StepCostSpec.ts">
+      <Publish>False</Publish>
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="test\PositionComponentSpec.ts" />
     <TypeScriptCompile Include="test\HealthComponentSpec.ts" />
     <TypeScriptCompile Include="test\MoveSystemSpec.ts" />
@@ -203,7 +206,7 @@
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <TypeScriptTarget>ES6</TypeScriptTarget>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
@@ -214,7 +217,7 @@
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
-    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />

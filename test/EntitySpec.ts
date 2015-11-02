@@ -26,7 +26,7 @@ describe('Entity Unit Test', () => {
 
             var entity = new Entity('test');
             expect(entity).to.not.equals(null);
-            expect(entity.name).to.equals('entity_test');
+            expect(entity.name).to.equals('test_entity');
             done();
         });
     });
@@ -36,7 +36,7 @@ describe('Entity Unit Test', () => {
 
             var entity = new Entity('npc');
             expect(entity).to.not.equals(null);
-            expect(entity.name).to.equals('entity_npc');
+            expect(entity.name).to.equals('npc_entity');
 
             var healthComponent = new HealthComponent(100);
             expect(entity.addComponent(healthComponent)).to.equals(true);
@@ -49,7 +49,7 @@ describe('Entity Unit Test', () => {
 
             var entity = new Entity('npc');
             expect(entity).to.not.equals(null);
-            expect(entity.name).to.equals('entity_npc');
+            expect(entity.name).to.equals('npc_entity');
 
             var positionComponent = new PositionComponent(100, 100);
             expect(entity.addComponent(positionComponent)).to.equals(true);
@@ -62,7 +62,7 @@ describe('Entity Unit Test', () => {
 
             var entity = new Entity('npc');
             expect(entity).to.not.equals(null);
-            expect(entity.name).to.equals('entity_npc');
+            expect(entity.name).to.equals('npc_entity');
 
             var healthComponent = new HealthComponent(100);
             expect(entity.addComponent(healthComponent)).to.equals(true);

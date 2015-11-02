@@ -20,7 +20,7 @@ export class Entity extends Base {
     components: Map<string, Component>;
 
     constructor(name: string) {
-        super('entity_' + name);
+        super(name + '_entity');
         this.components = new Map<string, Component>();
     }
 
@@ -41,7 +41,7 @@ export class Entity extends Base {
 export abstract class Component extends Base {
 
     constructor(name: string) {
-        super('component_' + name);
+        super(name + '_component');
     }
 
 }
@@ -49,7 +49,7 @@ export abstract class Component extends Base {
 export abstract class System extends Base {
 
     constructor(name: string) {
-        super('system_' + name);
+        super(name + '_system');
     }
 
     abstract process(entityMap: Map<string, Entity>): void;
@@ -67,12 +67,11 @@ export abstract class Action {
     executed: boolean;
    
     constructor(name: string, preCost: ICost, postCost: ICost) {
-        this.name = 'cost_' + name;
+        this.name = name + '_cost';
         this.preCost = preCost;
         this.postCost = postCost;
-        this.executed = false;
     }
-     
+    
     protected abstract doExecute(): boolean;
 
     preCostCheck(): boolean {
@@ -94,14 +93,8 @@ export abstract class Action {
             return false;
         }
 
-        if (this.doExecute()) {
-            this.executed = true;
-        }
-        return this.executed;
-    }
-
-    isExecuted(): boolean {
-        return this.executed;
+        this.doExecute();
+        return true;
     }
 
 }
