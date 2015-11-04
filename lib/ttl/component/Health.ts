@@ -1,4 +1,4 @@
-﻿import interfaces = require('../interfaces');
+﻿import interfaces = require('../core');
 
 
 class HealthComponent extends interfaces.Component {

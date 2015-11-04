@@ -6,10 +6,12 @@
  */
 import chai = require('chai');
 import interfaces = require('../lib/ttl/interfaces');
+//import globals = require('../lib/ttl/globals');
 var Entity = interfaces.Entity;
 import HealthComponent = require('../lib/ttl/component/Health');
 import PositionComponent = require('../lib/ttl/component/Position');
 import MoveSystem = require('../lib/ttl/system/Move');
+import GameEngine = require('../lib/ttl/engine/GameEngine');
 
 /**
  * Globals
@@ -24,7 +26,7 @@ describe('Basic Unit Test - Global ID', () => {
     describe('Global ID should be increasing from 1', () => {
         it('Global ID of any type should be increasing from 1', (done) => {
 
-            interfaces.globalIDCounter = 1;
+            //globals.globalIDCounter = 1;
 
             var entity = new Entity('test');
             expect(entity.globalId).to.equals(1);

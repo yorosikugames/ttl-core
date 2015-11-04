@@ -13,7 +13,7 @@ class AISystem extends interfaces.System {
             var entity = entityMap.get(entityName);
             for (var componentName in entity.components.keys()) {
                 var component = entity.components.get(componentName);
-                if (component.name != "component_ai") continue;
+                if (component.name != "ai_component") continue;
                 // do something in here
             }
         }

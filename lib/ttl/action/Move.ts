@@ -1,4 +1,4 @@
-﻿import interfaces = require('../interfaces');
+﻿import interfaces = require('../core');
 
 
 class MoveAction extends interfaces.Action {

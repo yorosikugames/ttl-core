@@ -60,22 +60,38 @@
     <Content Include="lib\mocha\package.json" />
     <Content Include="lib\mocha\README.md" />
     <Content Include="package.json" />
+    <TypeScriptCompile Include="lib\ttl\action\Spawn.ts" />
     <TypeScriptCompile Include="lib\ttl\action\Move.ts" />
     <TypeScriptCompile Include="lib\ttl\component\Health.ts" />
     <TypeScriptCompile Include="lib\ttl\component\Position.ts" />
     <TypeScriptCompile Include="lib\ttl\cost\Step.ts" />
-    <TypeScriptCompile Include="lib\ttl\interfaces.ts" />
+    <TypeScriptCompile Include="lib\ttl\engine\GameEngine.ts" />
+    <TypeScriptCompile Include="lib\ttl\globals.ts" />
+    <TypeScriptCompile Include="lib\ttl\core.ts" />
+    <TypeScriptCompile Include="lib\ttl\delta\DeltaLogger.ts" />
+    <TypeScriptCompile Include="lib\ttl\delta\DeltaFactory.ts" />
     <TypeScriptCompile Include="lib\ttl\system\AI.ts" />
+    <TypeScriptCompile Include="lib\ttl\system\Spawn.ts" />
     <TypeScriptCompile Include="lib\ttl\system\Move.ts" />
-    <TypeScriptCompile Include="test\EntitySpec.ts" />
-    <TypeScriptCompile Include="test\GlobalIdSpec.ts" />
+    <TypeScriptCompile Include="test\EntitySpec.ts">
+      <TestFramework>mocha</TestFramework>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="test\GlobalIdSpec.ts">
+      <TestFramework>mocha</TestFramework>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="test\StepCostSpec.ts">
       <Publish>False</Publish>
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>mocha</TestFramework>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="test\PositionComponentSpec.ts" />
-    <TypeScriptCompile Include="test\HealthComponentSpec.ts" />
-    <TypeScriptCompile Include="test\MoveSystemSpec.ts" />
+    <TypeScriptCompile Include="test\PositionComponentSpec.ts">
+      <TestFramework>mocha</TestFramework>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="test\HealthComponentSpec.ts">
+      <TestFramework>mocha</TestFramework>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="test\MoveSystemSpec.ts">
+      <TestFramework>mocha</TestFramework>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="typings\chai\chai.d.ts" />
     <TypeScriptCompile Include="typings\es6\es.6.d.ts" />
     <TypeScriptCompile Include="typings\mocha\mocha.d.ts" />
@@ -104,6 +120,8 @@
     <Folder Include="lib\ttl\component\" />
     <Folder Include="lib\ttl\action\" />
     <Folder Include="lib\ttl\cost\" />
+    <Folder Include="lib\ttl\delta\" />
+    <Folder Include="lib\ttl\engine\" />
     <Folder Include="lib\ttl\system\" />
     <Folder Include="test\" />
     <Folder Include="typings\" />
@@ -190,12 +208,17 @@
     <Compile Include="lib\mocha\mocha.js" />
     <Compile Include="lib\requirejs\require.js" />
     <Compile Include="lib\ttl\action\Move.js" />
+    <Compile Include="lib\ttl\action\Spawn.js" />
     <Compile Include="lib\ttl\component\Health.js" />
     <Compile Include="lib\ttl\component\Position.js" />
     <Compile Include="lib\ttl\cost\Step.js" />
-    <Compile Include="lib\ttl\interfaces.js" />
+    <Compile Include="lib\ttl\delta\DeltaFactory.js" />
+    <Compile Include="lib\ttl\delta\DeltaLogger.js" />
+    <Compile Include="lib\ttl\engine\GameEngine.js" />
+    <Compile Include="lib\ttl\globals.js" />
     <Compile Include="lib\ttl\system\AI.js" />
     <Compile Include="lib\ttl\system\Move.js" />
+    <Compile Include="lib\ttl\system\Spawn.js" />
     <Compile Include="test\EntitySpec.js" />
     <Compile Include="test\GlobalIdSpec.js" />
     <Compile Include="test\HealthComponentSpec.js" />
@@ -217,7 +240,7 @@
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
-    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
