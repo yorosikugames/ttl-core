@@ -1,7 +1,7 @@
-﻿import interfaces = require('../core');
+﻿import core = require('../core');
 
 
-class HealthComponent extends interfaces.Component {
+class HealthComponent extends core.Component {
 
     hp: number;
 

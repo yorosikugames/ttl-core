@@ -1,7 +1,7 @@
-﻿import interfaces = require('../core');
+﻿import core = require('../core');
 
 
-class PositionComponent extends interfaces.Component {
+class PositionComponent extends core.Component {
 
     x: number;
     y: number;

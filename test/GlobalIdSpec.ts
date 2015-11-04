@@ -5,9 +5,8 @@
  * Module dependencies.
  */
 import chai = require('chai');
-import interfaces = require('../lib/ttl/interfaces');
-//import globals = require('../lib/ttl/globals');
-var Entity = interfaces.Entity;
+import core = require('../lib/ttl/core');
+var Entity = core.Entity;
 import HealthComponent = require('../lib/ttl/component/Health');
 import PositionComponent = require('../lib/ttl/component/Position');
 import MoveSystem = require('../lib/ttl/system/Move');
@@ -26,7 +25,7 @@ describe('Basic Unit Test - Global ID', () => {
     describe('Global ID should be increasing from 1', () => {
         it('Global ID of any type should be increasing from 1', (done) => {
 
-            //globals.globalIDCounter = 1;
+            core.globalIDCounter = 1;
 
             var entity = new Entity('test');
             expect(entity.globalId).to.equals(1);

@@ -1,16 +1,16 @@
-﻿import interfaces = require('../interfaces');
+﻿import core = require('../core');
 import globals = require('../globals');
 import PositionComponent = require('../component/Position');
 import SpawnAction = require('../action/Spawn');
 
 
-class SpawnSystem extends interfaces.System {
+class SpawnSystem extends core.System {
 
     constructor() {
         super('spawn');
     }
 
-    process(entityMap: Map<string, interfaces.Entity>): void {
+    process(entityMap: Map<string, core.Entity>): void {
 
         for (var entityName in entityMap.keys()) {
             var entity = entityMap.get(entityName);
@@ -19,8 +19,8 @@ class SpawnSystem extends interfaces.System {
                 var action = entity.actionQueue[idx];
                 if (action.name != 'spawn_action') continue;
                 if (action.execute()) {
-                    globals.globalDeltaLogger.enqueue(
-                        globals.globalDeltaFactory.createSpawnDelta(entity, <SpawnAction>action));
+                    core.globalDeltaLogger.enqueue(
+                        core.globalDeltaFactory.createSpawnDelta(entity, <SpawnAction>action));
                 }
             }
         }

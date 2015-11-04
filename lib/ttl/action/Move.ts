@@ -1,13 +1,13 @@
-﻿import interfaces = require('../core');
+﻿import core = require('../core');
 
 
-class MoveAction extends interfaces.Action {
+class MoveAction extends core.Action {
 
-    target: interfaces.Entity;
+    target: core.Entity;
     dx: number;
     dy: number;
 
-    constructor(preCost: interfaces.ICost, postCost: interfaces.ICost, target: interfaces.Entity, dx: number, dy: number) {
+    constructor(preCost: core.ICost, postCost: core.ICost, target: core.Entity, dx: number, dy: number) {
         super('move', preCost, postCost);
         this.target = target;
         this.dx = dx;

@@ -13,8 +13,9 @@ class DeltaLogger {
 
     toJSON(): string {
         var jsonArray = new Array<string>();
-        for (var delta in this.deltaList) {
-            jsonArray.push(JSON.stringify(delta));
+        for (var idx in this.deltaList) {
+            jsonArray.push(JSON.stringify(
+                Array.from(this.deltaList[idx].entries())));
         }
         return jsonArray.join('\n');
     }

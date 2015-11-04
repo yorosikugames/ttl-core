@@ -1,7 +1,7 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/chai/chai.d.ts" />
-define(["require", "exports", 'chai', '../lib/ttl/interfaces', '../lib/ttl/system/Move'], function (require, exports, chai, interfaces, MoveSystem) {
-    var Entity = interfaces.Entity;
+define(["require", "exports", 'chai', '../lib/ttl/core', '../lib/ttl/system/Move'], function (require, exports, chai, core, MoveSystem) {
+    var Entity = core.Entity;
     /**
      * Globals
      */

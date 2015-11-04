@@ -5,8 +5,8 @@
  * Module dependencies.
  */
 import chai = require('chai');
-import interfaces = require('../lib/ttl/interfaces');
-var Entity = interfaces.Entity;
+import core = require('../lib/ttl/core');
+var Entity = core.Entity;
 import HealthComponent = require('../lib/ttl/component/Health');
 import PositionComponent = require('../lib/ttl/component/Position');
 import MoveSystem = require('../lib/ttl/system/Move');
@@ -31,7 +31,7 @@ describe('System Unit Test - Move', () => {
 
             var moveSystem = new MoveSystem();
             var entity = new Entity('npc');
-            var entityMap = new Map<string, interfaces.Entity>();
+            var entityMap = new Map<string, core.Entity>();
             moveSystem.process(entityMap);
             done();
         });

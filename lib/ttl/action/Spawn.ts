@@ -1,13 +1,13 @@
-﻿import interfaces = require('../core');
+﻿import core = require('../core');
 
 
-class SpawnAction extends interfaces.Action {
+class SpawnAction extends core.Action {
 
-    target: interfaces.Entity;
+    target: core.Entity;
     x: number;
     y: number;
 
-    constructor(preCost: interfaces.ICost, postCost: interfaces.ICost, target: interfaces.Entity, x: number, y: number) {
+    constructor(preCost: core.ICost, postCost: core.ICost, target: core.Entity, x: number, y: number) {
         super('spawn', preCost, postCost);
         this.target = target;
         this.x = x;

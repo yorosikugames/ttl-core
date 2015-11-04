@@ -1,4 +1,4 @@
-﻿import interfaces = require('../core');
+﻿import core = require('../core');
 import MoveAction = require('../action/Move');
 import SpawnAction = require('../action/Spawn');
 
@@ -12,7 +12,7 @@ class DeltaFactory {
         return delta;
     }
 
-    createSpawnDelta(entity: interfaces.Entity, spawnAction: SpawnAction): Map<string, any> {
+    createSpawnDelta(entity: core.Entity, spawnAction: SpawnAction): Map<string, any> {
         var delta = new Map<string, any>();
         delta.set('type', 'spawn');
         delta.set('entity_id', entity.globalId);
@@ -21,7 +21,7 @@ class DeltaFactory {
         return delta;
     }
 
-    createMoveDelta(entity: interfaces.Entity, moveAction: MoveAction): Map<string, any> {
+    createMoveDelta(entity: core.Entity, moveAction: MoveAction): Map<string, any> {
         var delta = new Map<string, any>();
         delta.set('type', 'move');
         delta.set('entity_id', entity.globalId);

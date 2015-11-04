@@ -1,7 +1,7 @@
-﻿import interfaces = require('../core');
+﻿import core = require('../core');
 
 
-class StepCost implements interfaces.ICost {
+class StepCost implements core.ICost {
 
     private stepCount: number;
     private processedStepCount: number;

@@ -28,6 +28,7 @@ define(function (require) {
         'HealthComponentSpec.js',
         'PositionComponentSpec.js',
         'StepCostSpec.js',
+        'GameEngineSpec.js',
     ], function (require) {
         mocha.run();
     });

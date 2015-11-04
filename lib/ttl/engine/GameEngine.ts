@@ -1,21 +1,21 @@
-﻿import interfaces = require('../core');
+﻿import core = require('../core');
 import AISystem = require('../system/AI');
 import SpawnSystem = require('../system/Spawn');
 import MoveSystem = require('../system/Move');
 
 
-class GameEngine extends interfaces.Base {
+class GameEngine extends core.Base {
 
     stepNumber: number;
-    systems: Array<interfaces.System>;
-    entityMap: Map<string, interfaces.Entity>;
+    systems: Array<core.System>;
+    entityMap: Map<string, core.Entity>;
 
     constructor() {
         super('engine');
 
         this.stepNumber = 1;
-        this.systems = new Array<interfaces.System>();
-        this.entityMap = new Map<string, interfaces.Entity>();
+        this.systems = new Array<core.System>();
+        this.entityMap = new Map<string, core.Entity>();
 
         // system register
         // AI > Spawn > Move
@@ -24,21 +24,21 @@ class GameEngine extends interfaces.Base {
         this.systems.push(new MoveSystem());
     }
 
-    registerEntity(entity: interfaces.Entity): boolean {
+    registerEntity(entity: core.Entity): boolean {
         if (this.entityMap.has(entity.name)) {
             return false;
         }
         this.entityMap.set(entity.name, entity);
     }
 
-    deregisterEntity(entity: interfaces.Entity): boolean {
+    deregisterEntity(entity: core.Entity): boolean {
         return this.entityMap.delete(entity.name);
     }
 
     onStep(): void {
 
-        globals.globalDeltaLogger.enqueue(
-            globals.globalDeltaFactory.createStepDelta(this.stepNumber));
+        core.globalDeltaLogger.enqueue(
+            core.globalDeltaFactory.createStepDelta(this.stepNumber));
         for (var idx in this.systems) {
             var system = this.systems[idx];
             system.process(this.entityMap);

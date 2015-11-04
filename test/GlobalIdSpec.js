@@ -1,8 +1,7 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/chai/chai.d.ts" />
-define(["require", "exports", 'chai', '../lib/ttl/interfaces', '../lib/ttl/component/Health', '../lib/ttl/component/Position', '../lib/ttl/system/Move'], function (require, exports, chai, interfaces, HealthComponent, PositionComponent, MoveSystem) {
-    //import globals = require('../lib/ttl/globals');
-    var Entity = interfaces.Entity;
+define(["require", "exports", 'chai', '../lib/ttl/core', '../lib/ttl/component/Health', '../lib/ttl/component/Position', '../lib/ttl/system/Move'], function (require, exports, chai, core, HealthComponent, PositionComponent, MoveSystem) {
+    var Entity = core.Entity;
     /**
      * Globals
      */
@@ -13,7 +12,7 @@ define(["require", "exports", 'chai', '../lib/ttl/interfaces', '../lib/ttl/compo
     describe('Basic Unit Test - Global ID', function () {
         describe('Global ID should be increasing from 1', function () {
             it('Global ID of any type should be increasing from 1', function (done) {
-                //globals.globalIDCounter = 1;
+                core.globalIDCounter = 1;
                 var entity = new Entity('test');
                 expect(entity.globalId).to.equals(1);
                 var health = new HealthComponent(0);

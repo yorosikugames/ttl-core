@@ -1,7 +1,7 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/chai/chai.d.ts" />
-define(["require", "exports", 'chai', '../lib/ttl/interfaces', '../lib/ttl/component/Health', '../lib/ttl/component/Position'], function (require, exports, chai, interfaces, HealthComponent, PositionComponent) {
-    var Entity = interfaces.Entity;
+define(["require", "exports", 'chai', '../lib/ttl/core', '../lib/ttl/component/Health', '../lib/ttl/component/Position'], function (require, exports, chai, core, HealthComponent, PositionComponent) {
+    var Entity = core.Entity;
     /**
      * Globals
      */

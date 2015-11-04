@@ -73,6 +73,7 @@
     <TypeScriptCompile Include="lib\ttl\system\AI.ts" />
     <TypeScriptCompile Include="lib\ttl\system\Spawn.ts" />
     <TypeScriptCompile Include="lib\ttl\system\Move.ts" />
+    <TypeScriptCompile Include="test\GameEngineSpec.ts" />
     <TypeScriptCompile Include="test\EntitySpec.ts">
       <TestFramework>mocha</TestFramework>
     </TypeScriptCompile>
@@ -220,6 +221,7 @@
     <Compile Include="lib\ttl\system\Move.js" />
     <Compile Include="lib\ttl\system\Spawn.js" />
     <Compile Include="test\EntitySpec.js" />
+    <Compile Include="test\GameEngineSpec.js" />
     <Compile Include="test\GlobalIdSpec.js" />
     <Compile Include="test\HealthComponentSpec.js" />
     <Compile Include="test\MoveSystemSpec.js" />

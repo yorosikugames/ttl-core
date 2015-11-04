@@ -1,13 +1,13 @@
-﻿import interfaces = require('../interfaces');
+﻿import core = require('../core');
 
 
-class AISystem extends interfaces.System {
+class AISystem extends core.System {
 
     constructor() {
         super('ai');
     }
 
-    process(entityMap: Map<string, interfaces.Entity>): void {
+    process(entityMap: Map<string, core.Entity>): void {
 
         for (var entityName in entityMap.keys()) {
             var entity = entityMap.get(entityName);

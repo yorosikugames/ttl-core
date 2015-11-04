@@ -1,16 +1,16 @@
-﻿import interfaces = require('../interfaces');
+﻿import core = require('../core');
 import globals = require('../globals');
 import PositionComponent = require('../component/Position');
 import MoveAction = require('../action/Move');
 
 
-class MoveSystem extends interfaces.System {
+class MoveSystem extends core.System {
 
     constructor() {
         super('move');
     }
 
-    process(entityMap: Map<string, interfaces.Entity>): void {
+    process(entityMap: Map<string, core.Entity>): void {
 
         for (var entityName in entityMap.keys()) {
             var entity = entityMap.get(entityName);
@@ -19,8 +19,8 @@ class MoveSystem extends interfaces.System {
                 var action = entity.actionQueue[idx];
                 if (action.name != 'move_action') continue;
                 if (action.execute()) {
-                    globals.globalDeltaLogger.enqueue(
-                        globals.globalDeltaFactory.createMoveDelta(entity, <MoveAction>action));
+                    core.globalDeltaLogger.enqueue(
+                        core.globalDeltaFactory.createMoveDelta(entity, <MoveAction>action));
                 }
             }
         }
