@@ -1,21 +1,20 @@
 ﻿
 class DeltaLogger {
 
-    deltaList: Array<Map<string, any>>;
+    deltaList: Array<Object>;
 
     constructor() {
-        this.deltaList = new Array<Map<string, any>>();
+        this.deltaList = new Array<Object>();
     }
 
-    enqueue(delta: Map<string, any>): void {
+    enqueue(delta: Object): void {
         this.deltaList.push(delta);
     }
 
     toJSON(): string {
         var jsonArray = new Array<string>();
         for (var idx in this.deltaList) {
-            jsonArray.push(JSON.stringify(
-                Array.from(this.deltaList[idx].entries())));
+            jsonArray.push(JSON.stringify(this.deltaList[idx]));
         }
         return jsonArray.join('\n');
     }

@@ -38,66 +38,66 @@ describe('Cost Unit Test - StepCost', () => {
 
         it('Processed StepCost should be 1 for 1 step', (done) => {
             var step = new StepCost(10);
-            step.onStep(1);
+            step.onStep();
             expect(step.getProcessedStepCost()).to.equals(1);
             done();
         });
 
         it('Processed StepCost should be 5 for 5 steps', (done) => {
             var step = new StepCost(10);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
             expect(step.getProcessedStepCost()).to.equals(5);
             done();
         });
 
         it('StepCost should not met for 9 steps', (done) => {
             var step = new StepCost(10);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
             expect(step.isCostMet()).to.equals(false);
             done();
         });
 
         it('StepCost should meet for 10 steps', (done) => {
             var step = new StepCost(10);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
             expect(step.isCostMet()).to.equals(true);
             done();
         });
 
         it('StepCost should met for 11 steps', (done) => {
             var step = new StepCost(10);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
-            step.onStep(1);
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
+            step.onStep();
             expect(step.isCostMet()).to.equals(true);
             done();
         });

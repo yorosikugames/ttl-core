@@ -71,7 +71,7 @@ export abstract class System extends Base {
 
 export interface ICost {
     isCostMet(): boolean;
-    onStep(stepCount: number): void;
+    onStep(): void;
 }
 
 export abstract class Action {
@@ -81,28 +81,15 @@ export abstract class Action {
     executed: boolean;
 
     constructor(name: string, preCost: ICost, postCost: ICost) {
-        this.name = name + '_cost';
+        this.name = name + '_action';
         this.preCost = preCost;
         this.postCost = postCost;
-    }
-
-    protected abstract doExecute(): boolean;
-
-    preCostCheck(): boolean {
-        if (this.preCost == null) {
-            return true;
-        }
-        return this.preCost.isCostMet();
-    }
-
-    postCostCheck(): boolean {
-        if (this.postCost == null) {
-            return true;
-        }
-        return this.postCost.isCostMet();
+        this.executed = false;
     }
 
     execute(): boolean {
+        this.onStep();
+
         if (!this.preCost.isCostMet() || this.executed) {
             return false;
         }
@@ -110,6 +97,38 @@ export abstract class Action {
         this.doExecute();
         this.executed = true;
         return true;
+    }
+
+    isRemovable(): boolean {
+        return this.preCostCheck() && this.postCostCheck();
+    }
+
+    protected abstract doExecute(): boolean;
+
+    private preCostCheck(): boolean {
+        if (this.preCost == null) {
+            return true;
+        }
+        return this.preCost.isCostMet();
+    }
+
+    private postCostCheck(): boolean {
+        if (this.postCost == null) {
+            return true;
+        }
+        return this.postCost.isCostMet();
+    }
+
+
+
+    // 일단 StepCost는 여기서 처리하지만 나중에 다른 코스트가 들어온다면 따로 시스템을 빼야하지 않을까?
+    private onStep() {
+        if (this.executed == false) {
+            if (this.preCost != null) this.preCost.onStep();
+        }
+        else {
+            if (this.postCost != null) this.preCost.onStep();
+        }
     }
 
 }

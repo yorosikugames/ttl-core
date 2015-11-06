@@ -19,8 +19,8 @@ class StepCost implements core.ICost {
         return this.processedStepCount;
     }
 
-    onStep(stepCount: number): void {
-        this.processedStepCount += stepCount;
+    onStep(): void {
+        this.processedStepCount++;
     }
 
     isCostMet(): boolean {
