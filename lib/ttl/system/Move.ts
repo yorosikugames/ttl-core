@@ -12,18 +12,16 @@ class MoveSystem extends core.System {
 
     process(entityMap: Map<string, core.Entity>): void {
 
-        for (var entityName in entityMap.keys()) {
-            var entity = entityMap.get(entityName);
 
-            for (var idx in entity.actionQueue) {
-                var action = entity.actionQueue[idx];
-                if (action.name != 'move_action') continue;
+        entityMap.forEach((entity, edx) => {
+            entity.actionQueue.forEach((action, adx) => {
+                if (action.name != 'move_action') return;
                 if (action.execute()) {
                     core.globalDeltaLogger.enqueue(
                         core.globalDeltaFactory.createMoveDelta(entity, <MoveAction>action));
                 }
-            }
-        }
+            });
+        });
 
     }
 }

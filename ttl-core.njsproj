@@ -63,6 +63,7 @@
     <TypeScriptCompile Include="lib\ttl\action\Spawn.ts" />
     <TypeScriptCompile Include="lib\ttl\action\Move.ts" />
     <TypeScriptCompile Include="lib\ttl\component\Health.ts" />
+    <TypeScriptCompile Include="lib\ttl\component\PatrolAI.ts" />
     <TypeScriptCompile Include="lib\ttl\component\Position.ts" />
     <TypeScriptCompile Include="lib\ttl\cost\Step.ts" />
     <TypeScriptCompile Include="lib\ttl\engine\GameEngine.ts" />
@@ -211,6 +212,7 @@
     <Compile Include="lib\ttl\action\Move.js" />
     <Compile Include="lib\ttl\action\Spawn.js" />
     <Compile Include="lib\ttl\component\Health.js" />
+    <Compile Include="lib\ttl\component\PatrolAI.js" />
     <Compile Include="lib\ttl\component\Position.js" />
     <Compile Include="lib\ttl\core.js" />
     <Compile Include="lib\ttl\cost\Step.js" />

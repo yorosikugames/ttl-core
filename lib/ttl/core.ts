@@ -6,6 +6,22 @@ export var globalIDCounter = 0;
 export var globalDeltaLogger = new DeltaLogger();
 export var globalDeltaFactory = new DeltaFactory();
 
+export class Direction {
+    static EAST = 'EAST';
+    static WEST = 'WEST';
+    static SOUTH = 'SOUTH';
+    static NORTH = 'NORTH';
+}
+
+export class Position {
+    x: number;
+    y: number;
+
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+    }
+}
 
 export class Base {
     name: string;
@@ -90,7 +106,7 @@ export abstract class Action {
     execute(): boolean {
         this.onStep();
 
-        if (!this.preCost.isCostMet() || this.executed) {
+        if (!this.preCostCheck() || this.executed) {
             return false;
         }
 

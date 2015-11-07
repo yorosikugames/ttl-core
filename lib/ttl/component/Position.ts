@@ -3,13 +3,13 @@
 
 class PositionComponent extends core.Component {
 
-    x: number;
-    y: number;
+    pos: core.Position;
+    dir: core.Direction;
 
-    constructor(x: number, y: number) {
+    constructor(pos: core.Position, dir: core.Direction) {
         super('position');
-        this.x = x;
-        this.y = y;
+        this.pos = pos;
+        this.dir = dir;
     }
 }
 

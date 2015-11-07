@@ -33,7 +33,7 @@ describe('Basic Unit Test - Global ID', () => {
             var health = new HealthComponent(0);
             expect(health.globalId).to.equals(2);
 
-            var position = new PositionComponent(0, 0);
+            var position = new PositionComponent(new core.Position(0, 0), core.Direction.NORTH);
             expect(position.globalId).to.equals(3);
 
             var move = new MoveSystem();

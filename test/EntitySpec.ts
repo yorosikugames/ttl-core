@@ -51,7 +51,7 @@ describe('Entity Unit Test', () => {
             expect(entity).to.not.equals(null);
             expect(entity.name).to.equals('npc_entity');
 
-            var positionComponent = new PositionComponent(100, 100);
+            var positionComponent = new PositionComponent(new core.Position(100, 100), core.Direction.NORTH);
             expect(entity.addComponent(positionComponent)).to.equals(true);
             expect(entity.components.size).equals(1);
 
@@ -68,7 +68,7 @@ describe('Entity Unit Test', () => {
             expect(entity.addComponent(healthComponent)).to.equals(true);
             expect(entity.components.size).equals(1);
 
-            var positionComponent = new PositionComponent(100, 100);
+            var positionComponent = new PositionComponent(new core.Position(100, 100), core.Direction.NORTH);
             expect(entity.addComponent(positionComponent)).to.equals(true);
             expect(entity.components.size).equals(2);
 

@@ -13,12 +13,10 @@ class SpawnSystem extends core.System {
     process(entityMap: Map<string, core.Entity>): void {
 
         entityMap.forEach((entity, index) => {
-            console.log(entity.actionQueue.length);
             for (var idx in entity.actionQueue) {
                 var action = entity.actionQueue[idx];
                 if (action.name != 'spawn_action') continue;
                 if (action.execute()) {
-                    console.log('exected in spawn system');
                     core.globalDeltaLogger.enqueue(
                         core.globalDeltaFactory.createSpawnDelta(entity, <SpawnAction>action));
                 }

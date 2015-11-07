@@ -1,4 +1,5 @@
 ﻿import core = require('../core');
+import PositionComponent = require('../component/Position');
 
 
 class MoveAction extends core.Action {
@@ -16,7 +17,9 @@ class MoveAction extends core.Action {
 
     protected doExecute(): boolean {
 
-        var moveComponent = this.target.components.get("move_component");
+        var positionComponent = this.target.getComponent<PositionComponent>('position_component');
+        positionComponent.pos.x += this.dx;
+        positionComponent.pos.y += this.dy;
 
         return true;
     }

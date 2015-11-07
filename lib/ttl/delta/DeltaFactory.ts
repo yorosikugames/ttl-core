@@ -16,8 +16,10 @@ class DeltaFactory {
         var delta = new Object();
         delta['type'] = 'spawn';
         delta['entity_id'] = entity.globalId;
-        delta['x'] = spawnAction.x;
-        delta['y'] = spawnAction.y;
+        delta['entity_name'] = entity.name;
+        delta['x'] = spawnAction.pos.x;
+        delta['y'] = spawnAction.pos.y;
+        delta['dir'] = spawnAction.dir;
         return delta;
     }
 
