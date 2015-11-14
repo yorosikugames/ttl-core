@@ -7,9 +7,13 @@
 import chai = require('chai');
 import core = require('../lib/ttl/core');
 import GameEngine = require('../lib/ttl/engine/GameEngine');
-import SpawnAction = require('../lib/ttl/action/Spawn');
 import StepCost = require('../lib/ttl/cost/Step');
-import PatrolAIComponent = require('../lib/ttl/component/PatrolAI');
+import SpawnAction = require('../lib/ttl/action/Spawn');
+import HealthComponent = require('../lib/ttl/component/Health');
+import AIObjectiveComponent = require('../lib/ttl/component/AIObjective');
+import AIObjectiveParameter = core.AIObjectiveParameter;
+//import PatrolAIComponent = require('../lib/ttl/component/PatrolAI');
+
 
 /**
  * Globals
@@ -25,13 +29,21 @@ describe('Engine Test', () => {
         it('Test', (done) => {
 
             var entity = new core.Entity('John');
-            var entityPos = new core.Position(10, 10);
+
+            var aiObjectiveParameter = new AIObjectiveParameter();
             var startPos = new core.Position(10, 10);
             var endPos = new core.Position(20, 20);
+            aiObjectiveParameter.patrolIndex = 0;
+            aiObjectiveParameter.patrolPositions = [startPos, endPos];
+            var aiObjectiveComponent = new AIObjectiveComponent('patrol', aiObjectiveParameter);
+            entity.addComponent(aiObjectiveComponent);
+            //var patrolAIComponent = new PatrolAIComponent([startPos, endPos]);
+            //entity.addComponent(patrolAIComponent);
 
-            var patrolAIComponent = new PatrolAIComponent([startPos, endPos]);
-            entity.addComponent(patrolAIComponent);
+            var healthComponent = new HealthComponent(100);
+            entity.addComponent(healthComponent);
 
+            var entityPos = new core.Position(10, 10);
             var spawnAction = new SpawnAction(new StepCost(2), null, entity, entityPos, core.Direction.NORTH);
             entity.actionQueue.push(spawnAction);
 

@@ -1,6 +1,8 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/chai/chai.d.ts" />
-define(["require", "exports", 'chai', '../lib/ttl/core', '../lib/ttl/engine/GameEngine', '../lib/ttl/action/Spawn', '../lib/ttl/cost/Step', '../lib/ttl/component/PatrolAI'], function (require, exports, chai, core, GameEngine, SpawnAction, StepCost, PatrolAIComponent) {
+define(["require", "exports", 'chai', '../lib/ttl/core', '../lib/ttl/engine/GameEngine', '../lib/ttl/cost/Step', '../lib/ttl/action/Spawn', '../lib/ttl/component/Health', '../lib/ttl/component/AIObjective'], function (require, exports, chai, core, GameEngine, StepCost, SpawnAction, HealthComponent, AIObjectiveComponent) {
+    var AIObjectiveParameter = core.AIObjectiveParameter;
+    //import PatrolAIComponent = require('../lib/ttl/component/PatrolAI');
     /**
      * Globals
      */
@@ -12,11 +14,18 @@ define(["require", "exports", 'chai', '../lib/ttl/core', '../lib/ttl/engine/Game
         describe('Test', function () {
             it('Test', function (done) {
                 var entity = new core.Entity('John');
-                var entityPos = new core.Position(10, 10);
+                var aiObjectiveParameter = new AIObjectiveParameter();
                 var startPos = new core.Position(10, 10);
                 var endPos = new core.Position(20, 20);
-                var patrolAIComponent = new PatrolAIComponent([startPos, endPos]);
-                entity.addComponent(patrolAIComponent);
+                aiObjectiveParameter.patrolIndex = 0;
+                aiObjectiveParameter.patrolPositions = [startPos, endPos];
+                var aiObjectiveComponent = new AIObjectiveComponent('patrol', aiObjectiveParameter);
+                entity.addComponent(aiObjectiveComponent);
+                //var patrolAIComponent = new PatrolAIComponent([startPos, endPos]);
+                //entity.addComponent(patrolAIComponent);
+                var healthComponent = new HealthComponent(100);
+                entity.addComponent(healthComponent);
+                var entityPos = new core.Position(10, 10);
                 var spawnAction = new SpawnAction(new StepCost(2), null, entity, entityPos, core.Direction.NORTH);
                 entity.actionQueue.push(spawnAction);
                 var engine = new GameEngine();

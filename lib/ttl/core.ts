@@ -143,8 +143,17 @@ export abstract class Action {
             if (this.preCost != null) this.preCost.onStep();
         }
         else {
-            if (this.postCost != null) this.preCost.onStep();
+            if (this.postCost != null) this.postCost.onStep();
         }
     }
+}
 
+export class AIObjectiveParameter {
+    patrolIndex: number;
+    patrolPositions: Position[];
+
+    constructor() {
+        this.patrolIndex = -1;
+        this.patrolPositions = [];
+    }
 }

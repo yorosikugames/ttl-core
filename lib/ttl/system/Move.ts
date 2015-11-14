@@ -20,6 +20,10 @@ class MoveSystem extends core.System {
                     core.globalDeltaLogger.enqueue(
                         core.globalDeltaFactory.createMoveDelta(entity, <MoveAction>action));
                 }
+
+                if (action.isRemovable()) {
+                    entity.actionQueue.splice(adx, 1);
+                }
             });
         });
 

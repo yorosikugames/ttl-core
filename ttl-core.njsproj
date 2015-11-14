@@ -63,6 +63,7 @@
     <TypeScriptCompile Include="lib\ttl\action\Spawn.ts" />
     <TypeScriptCompile Include="lib\ttl\action\Move.ts" />
     <TypeScriptCompile Include="lib\ttl\component\Health.ts" />
+    <TypeScriptCompile Include="lib\ttl\component\AIObjective.ts" />
     <TypeScriptCompile Include="lib\ttl\component\PatrolAI.ts" />
     <TypeScriptCompile Include="lib\ttl\component\Position.ts" />
     <TypeScriptCompile Include="lib\ttl\cost\Step.ts" />
@@ -211,6 +212,7 @@
     <Compile Include="lib\requirejs\require.js" />
     <Compile Include="lib\ttl\action\Move.js" />
     <Compile Include="lib\ttl\action\Spawn.js" />
+    <Compile Include="lib\ttl\component\AIObjective.js" />
     <Compile Include="lib\ttl\component\Health.js" />
     <Compile Include="lib\ttl\component\PatrolAI.js" />
     <Compile Include="lib\ttl\component\Position.js" />

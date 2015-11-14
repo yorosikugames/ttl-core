@@ -1,6 +1,7 @@
 ﻿import core = require('../core');
 import MoveAction = require('../action/Move');
 import SpawnAction = require('../action/Spawn');
+import HealthComponent = require('../component/Health');
 
 
 class DeltaFactory {
@@ -20,6 +21,12 @@ class DeltaFactory {
         delta['x'] = spawnAction.pos.x;
         delta['y'] = spawnAction.pos.y;
         delta['dir'] = spawnAction.dir;
+
+        var healthComponent = entity.getComponent<HealthComponent>("health_component");
+        if (healthComponent != null) {
+            delta['health'] = healthComponent.hp;
+        }
+
         return delta;
     }
 
