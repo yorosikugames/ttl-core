@@ -12,10 +12,10 @@ class MoveSystem extends core.System {
 
     process(entityMap: Map<string, core.Entity>): void {
 
-
         entityMap.forEach((entity, edx) => {
             entity.actionQueue.forEach((action, adx) => {
                 if (action.name != 'move_action') return;
+
                 if (action.execute()) {
                     core.globalDeltaLogger.enqueue(
                         core.globalDeltaFactory.createMoveDelta(entity, <MoveAction>action));

@@ -23,6 +23,16 @@ export class Position {
     }
 }
 
+export class Size {
+    width: number;
+    height: number;
+
+    constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+    }
+}
+
 export class Base {
     name: string;
     globalId: number;
@@ -110,9 +120,8 @@ export abstract class Action {
             return false;
         }
 
-        this.doExecute();
         this.executed = true;
-        return true;
+        return this.doExecute();
     }
 
     isRemovable(): boolean {
@@ -155,5 +164,36 @@ export class AIObjectiveParameter {
     constructor() {
         this.patrolIndex = -1;
         this.patrolPositions = [];
+    }
+}
+
+export class RNG {
+    private seed: number;
+
+    constructor(seed: number) {
+        this.seed = seed;
+    }
+
+    private next(min: number, max: number): number {
+        max = max || 0;
+        min = min || 0;
+
+        this.seed = (this.seed * 9301 + 49297) % 233280;
+        var rnd = this.seed / 233280;
+
+        return min + rnd * (max - min);
+    }
+
+    // http://indiegamr.com/generate-repeatable-random-numbers-in-js/
+    public nextInt(min: number, max: number): number {
+        return Math.round(this.next(min, max));
+    }
+
+    public nextDouble(): number {
+        return this.next(0, 1);
+    }
+
+    public pick(collection: any[]): any {
+        return collection[this.nextInt(0, collection.length - 1)];
     }
 }
